@@ -159,10 +159,11 @@ module Slim::Helpers
   #
   # @param attrs [Hash, String] the tag's attributes as Hash),
   #        or the tag's class if it's not a Hash.
+  # @param title [String, nil] the title.
   # @yield The block of Slim/HTML code within the tag (optional).
   # @return [String] a rendered HTML fragment.
   #
-  def block_with_title(attrs = {}, &block)
+  def block_with_title(attrs = {}, title = @title, &block)
     if (klass = attrs[:class]).is_a? String
       klass = klass.split(' ')
     end
