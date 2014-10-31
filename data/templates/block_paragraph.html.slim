@@ -1,2 +1,6 @@
-= block_with_title 'paragraph'
-  p =content
+- if title?
+  section.paragraph
+    h6 =title
+    p id=id class=role =content
+- else
+  p id=id class=role =content
