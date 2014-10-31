@@ -167,15 +167,22 @@ module Slim::Helpers
     end
   end
 
-  ##
-  # Same as {#block_with_title}, but uses +captioned_title+ as a title.
-  #
-  # @param klass [Array<String>, String] the style classes (default: [])
-  # @yieldreturn [String] HTML fragment to be wrapped.
-  # @return [String] HTML
-  #
-  def block_with_captitle(klass = [], &block)
-    block_with_title klass, captioned_title, &block
+  def block_with_caption(position = :bottom, attrs = {}, &block)
+    if (klass = attrs[:class]).is_a? String
+      klass = klass.split(' ')
+    end
+    attrs[:class] = [klass, role].flatten.uniq
+    attrs[:id] = id
+
+    if title.nil_or_empty?
+      html_tag :div, attrs, yield
+    else
+      html_tag :figure, attrs do
+        ary = [ yield, html_tag(:figcaption) { captioned_title } ]
+        ary.reverse! if position == :top
+        ary.compact.join "\n"
+      end
+    end
   end
 
   ##
