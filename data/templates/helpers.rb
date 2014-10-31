@@ -48,10 +48,11 @@ module Slim::Helpers
   #
   # @param name [#to_s] the name of the tag.
   # @param attributes [Hash] (default: {})
+  # @param content [#to_s] the content; +nil+ to call the block. (default: nil).
   # @yield The block of Slim/HTML code within the tag (optional).
   # @return [String] a rendered HTML element.
   #
-  def html_tag(name, attributes = {})
+  def html_tag(name, attributes = {}, content = nil)
     attrs = attributes.reject { |_, v|
       v.nil? || (v.respond_to?(:empty?) && v.empty?)
     }.map do |k, v|
@@ -65,7 +66,7 @@ module Slim::Helpers
     if VOID_ELEMENTS.include? name.to_s
       %(<#{name}#{attrs_str}>)
     else
-      content = block_given? ? yield : ''
+      content ||= yield if block_given?
       %(<#{name}#{attrs_str}>#{content}</#{name}>)
     end
   end
@@ -96,14 +97,15 @@ module Slim::Helpers
   #        render the enclosing tag.
   # @param name (see #html_tag)
   # @param attributes (see #html_tag)
+  # @param content (see #html_tag)
   # @yield (see #html_tag)
   # @return [String] a rendered HTML fragment.
   #
-  def html_tag_if(condition, name, attributes = {}, &block)
+  def html_tag_if(condition, name, attributes = {}, content = nil, &block)
     if condition
-      html_tag name, attributes, &block
+      html_tag name, attributes, content, &block
     else
-      yield
+      content || yield
     end
   end
 
