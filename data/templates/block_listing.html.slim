@@ -1,0 +1,13 @@
+= block_with_captitle 'listingblock'
+  .content
+    - if style == 'source'
+      - if highlighter == 'html-pipeline'
+        pre lang=source_lang
+          code =content
+      - else
+        - unless ['CodeRay', 'pygments'].include? highlighter
+          - code_class = "language-#{source_lang}" if source_lang
+        pre class=[highlighter, 'highlight', ('linenums' if attr? :linenums), nowrap?]
+          code class=code_class data-lang=source_lang =content
+    - else
+      pre class=nowrap? =content

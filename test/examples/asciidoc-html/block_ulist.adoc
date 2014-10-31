@@ -1,0 +1,13 @@
+// .checklist_interactive
+[options="interactive"]
+- [*] checked
+- [x] also checked
+- [ ] not checked
+-     normal list item
+
+// .checklist_icons_font
+:icons: font
+- [*] checked
+- [x] also checked
+- [ ] not checked
+-     normal list item

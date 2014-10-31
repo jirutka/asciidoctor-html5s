@@ -1,0 +1,19 @@
+// .icon_font
+:icons: font
+icon:heart[]
+
+// .icon_font_with_title
+:icons: font
+icon:heart[title="I <3 Asciidoctor"]
+
+// .icon_font_with_size
+:icons: font
+icon:shield[2x]
+
+// .icon_font_with_rotate
+:icons: font
+icon:shield[rotate=90]
+
+// .icon_font_with_flip
+:icons: font
+icon:shield[flip=vertical]

@@ -1,0 +1,17 @@
+// .youtube
+video::rPQoq7ThGAU[youtube]
+
+// .youtube_iframe_params
+video::rPQoq7ThGAU[youtube, width=640, height=480, options="nofullscreen"]
+
+// .youtube_url_params
+video::rPQoq7ThGAU[youtube, start=60, end=140, options="autoplay, loop, nocontrol"]
+
+// .vimeo
+video::32255377[vimeo]
+
+// .vimeo_iframe_params
+video::32255377[vimeo, width=640, height=480, options="nofullscreen"]
+
+// .vimeo_url_params
+video::32255377[vimeo, start=60, options="autoplay, loop"]

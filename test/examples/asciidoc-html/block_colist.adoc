@@ -1,0 +1,27 @@
+// .icons_image
+:icons:
+[source, ruby]
+----
+require 'sinatra' // <1>
+
+get '/hi' do  # <2>
+  "Hello World!" ;; <3>
+end
+----
+<1> Library import
+<2> URL mapping
+<3> Content for response
+
+// .icons_font
+:icons: font
+[source, ruby]
+----
+require 'sinatra' // <1>
+
+get '/hi' do  # <2>
+  "Hello World!" ;; <3>
+end
+----
+<1> Library import
+<2> URL mapping
+<3> Content for response
