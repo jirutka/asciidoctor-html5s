@@ -1,11 +1,4 @@
-- if type == :xref
-  - if attr :index
-    span.footnoteref
-      = surround '[', ']'
-        a.footnote href="##{footnote_id}" title="View footnote." =(attr :index)
-  - else
-    span.footnoteref.red title="Unresolved footnote reference." [#{text}]
+- if attr :index
+  a.footnote id=(footnoteref_id unless type == :xref) href="##{footnote_id}" title="View footnote." [#{attr :index}]
 - else
-  span.footnote id=(footnote_id id if id)
-    = surround '[', ']'
-      a.footnote id=footnoteref_id href="##{footnote_id}" title="View footnote." =(attr :index)
+  a.footnote.broken title="Unresolved footnote reference." [#{text}]
