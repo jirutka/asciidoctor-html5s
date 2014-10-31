@@ -8,7 +8,7 @@
   - else
     - marker_checked = '&#10003;'
     - marker_unchecked = '&#10063;'
-= block_with_title ['ulist', checklist, style]
+= block_with_title :class=>['ulist', checklist, style]
   ul class=(checklist || style)
     - items.each do |item|
       li

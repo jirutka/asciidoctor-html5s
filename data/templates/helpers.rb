@@ -133,15 +133,23 @@ module Slim::Helpers
   # nested div with the class "title" and the title's content is added as well.
   #
   # @example When @id, @role and @title attributes are set.
-  #   = block_with_title ['quoteblock', 'center']
+  #   = block_with_title :class=>['quoteblock', 'center']
   #     blockquote =content
   #
-  #   <div id="myid" class="quoteblock center myrole1 myrole2">
-  #     <div class="title">Block Title</div>
+  #   <section id="myid" class="quoteblock center myrole1 myrole2">
+  #     <h6>Block Title</h6>
+  #     <blockquote>Lorem ipsum</blockquote>
+  #   </section>
+  #
+  # @example When @id, @role and @title attributes are empty.
+  #   = block_with_title :class=>'quoteblock center', :style=>style_value(float: 'left')
+  #     blockquote =content
+  #
+  #   <div class="quoteblock center" style="float: left;">
   #     <blockquote>Lorem ipsum</blockquote>
   #   </div>
   #
-  # @example When @id, @role and @title attributes are empty.
+  # @example When shorthand style for class attribute is used.
   #   = block_with_title 'quoteblock center'
   #     blockquote =content
   #
@@ -149,20 +157,23 @@ module Slim::Helpers
   #     <blockquote>Lorem ipsum</blockquote>
   #   </div>
   #
-  # @param klass [Array<String>, String] the tag's class (default: []).
-  # @param title [String, nil] the title (default: @title).
+  # @param attrs [Hash, String] the tag's attributes as Hash),
+  #        or the tag's class if it's not a Hash.
   # @yield The block of Slim/HTML code within the tag (optional).
   # @return [String] a rendered HTML fragment.
   #
-  def block_with_title(klass = [], title = @title, &block)
-    klass = klass.split(' ') if klass.is_a? String
-    attrs = { id: id, class: [klass, role].flatten.uniq }
+  def block_with_title(attrs = {}, &block)
+    if (klass = attrs[:class]).is_a? String
+      klass = klass.split(' ')
+    end
+    attrs[:class] = [klass, role].flatten.uniq
+    attrs[:id] = id
 
-    html_tag 'div', attrs do
-      if title.nil_or_empty?
-        yield
-      else
-        html_tag('div', class: 'title') { title } + yield
+    if title.nil_or_empty?
+      html_tag :div, attrs, yield
+    else
+      html_tag :section, attrs do
+        [html_tag(:h6, {}, title), yield].join "\n"
       end
     end
   end

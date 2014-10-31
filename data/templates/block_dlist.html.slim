@@ -4,7 +4,7 @@
 - when 'horizontal'
   include _hdlist.html
 - else
-  = block_with_title ['dlist', style]
+  = block_with_title :class=>['dlist', style]
     dl
       - items.each do |terms, dd|
         - [*terms].each do |dt|
