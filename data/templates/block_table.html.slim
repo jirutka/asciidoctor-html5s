@@ -24,11 +24,14 @@
                   - else
                     - case cell.style
                     - when :asciidoc
-                      div =cell.content
+                      =cell.content
                     - when :verse
                       .verse =cell.text
                     - when :literal
                       .literal: pre =cell.text
                     - else
-                      - cell.content.each do |text|
-                        p.tableblock =text
+                      - if cell.content.one?
+                        =cell.content.first
+                      - else
+                        - cell.content.each do |text|
+                          p =text
