@@ -10,8 +10,4 @@
         - [*terms].each do |dt|
           dt class=('hdlist1' unless style) =dt.text
         - unless dd.nil?
-          dd
-            - if dd.text?
-              p =dd.text
-            - if dd.blocks?
-              =dd.content
+          dd =(print_item_content dd)

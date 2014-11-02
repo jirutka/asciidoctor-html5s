@@ -3,11 +3,8 @@
   ul class=(checklist || style)
     - items.each do |item|
       li
-        p
-          - if checklist && (item.attr? :checkbox)
-            input.checklist-item type='checkbox' disabled=true checked=(item.attr? :checked)
-            =<item.text
-          - else
-            =item.text
-        - if item.blocks?
-          =item.content
+        - if checklist && (item.attr? :checkbox)
+          input.checklist-item type='checkbox' disabled=true checked=(item.attr? :checked)
+          =<item.text
+        - else
+          =(print_item_content item)

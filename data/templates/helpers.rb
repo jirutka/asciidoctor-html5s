@@ -171,7 +171,9 @@ module Slim::Helpers
     attrs[:id] = id
 
     if title.nil_or_empty?
-      html_tag :div, attrs, yield
+      # XXX quick hack
+      nested = is_a?(::Asciidoctor::List) && parent.is_a?(::Asciidoctor::List)
+      html_tag_if !nested, :div, attrs, yield
     else
       html_tag :section, attrs do
         [html_tag(:h6, {}, title), yield].join "\n"
@@ -291,6 +293,11 @@ module Slim::Helpers
 
   def nowrap?
     'nowrap' if !document.attr?(:prewrap) || option?('nowrap')
+  end
+
+  def print_item_content(item)
+    wrap = item.blocks? && !item.blocks.all? { |b| b.is_a? ::Asciidoctor::List }
+    [ (html_tag_if(wrap, :p) { item.text } if item.text?), item.content ].join
   end
 
   ##
