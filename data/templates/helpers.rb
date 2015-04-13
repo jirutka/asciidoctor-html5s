@@ -176,7 +176,7 @@ module Slim::Helpers
       html_tag_if !nested, :div, attrs, yield
     else
       html_tag :section, attrs do
-        [html_tag(:h6, {}, title), yield].join "\n"
+        [html_tag(:h6, {}, title), yield].join("\n")
       end
     end
   end
@@ -194,7 +194,7 @@ module Slim::Helpers
       html_tag :figure, attrs do
         ary = [ yield, html_tag(:figcaption) { captioned_title } ]
         ary.reverse! if position == :top
-        ary.compact.join "\n"
+        ary.compact.join("\n")
       end
     end
   end
@@ -262,7 +262,7 @@ module Slim::Helpers
   def urlize(*segments)
     path = segments * '/'
     if path.start_with? '//'
-      @_uri_scheme ||= document.attr 'asset-uri-scheme', 'https'
+      @_uri_scheme ||= document.attr('asset-uri-scheme', 'https')
       path = "#{@_uri_scheme}:#{path}" unless @_uri_scheme.empty?
     end
     normalize_web_path path
@@ -335,7 +335,7 @@ module Slim::Helpers
   #         a style class.
   def highlighter
     @_highlighter ||=
-      case (highlighter = document.attr 'source-highlighter')
+      case (highlighter = document.attr('source-highlighter'))
       when 'coderay'; 'CodeRay'
       when 'highlight.js'; 'highlightjs'
       when 'prettify'; 'prettyprint'
@@ -398,8 +398,8 @@ is book and it's a child of a book part. Excluding block content."
     case (attr :poster, '').to_sym
     when :vimeo
       params = {
-        :autoplay => (1 if option? 'autoplay'),
-        :loop     => (1 if option? 'loop')
+        autoplay: (1 if option? 'autoplay'),
+        loop:     (1 if option? 'loop')
       }
       start_anchor = "#at=#{attr :start}" if attr? :start
       "//player.vimeo.com/video/#{attr :target}#{start_anchor}#{url_query params}"
@@ -407,18 +407,18 @@ is book and it's a child of a book part. Excluding block content."
     when :youtube
       video_id, list_id = (attr :target).split('/', 2)
       params = {
-        :rel      => 0,
-        :start    => (attr :start),
-        :end      => (attr :end),
-        :list     => (attr :list, list_id),
-        :autoplay => (1 if option? 'autoplay'),
-        :loop     => (1 if option? 'loop'),
-        :controls => (0 if option? 'nocontrols')
+        rel:      0,
+        start:    (attr :start),
+        end:      (attr :end),
+        list:     (attr :list, list_id),
+        autoplay: (1 if option? 'autoplay'),
+        loop:     (1 if option? 'loop'),
+        controls: (0 if option? 'nocontrols')
       }
       "//www.youtube.com/embed/#{video_id}#{url_query params}"
     else
       anchor = [(attr :start), (attr :end)].join(',').chomp(',')
-      anchor.prepend '#t=' unless anchor.empty?
+      anchor.prepend('#t=') unless anchor.empty?
       media_uri "#{attr :target}#{anchor}"
     end
   end
@@ -526,7 +526,7 @@ is book and it's a child of a book part. Excluding block content."
       end
     end
 
-    tags.join "\n"
+    tags.join("\n")
   end
 
   #--------------------------------------------------------
