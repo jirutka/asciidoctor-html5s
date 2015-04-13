@@ -492,15 +492,6 @@ is book and it's a child of a book part. Excluding block content."
         end
       end
 
-    when 'pygments'
-      if (attr 'pygments-css', 'class') == 'class'
-        if linkcss
-          styles << { href: [stylesdir, ss.pygments_stylesheet_name(attr 'pygments-style')] }
-        else
-          styles << { text: ss.pygments_stylesheet_data(attr 'pygments-style') }
-        end
-      end
-
     when 'highlightjs'
       hjs_base = attr :highlightjsdir, HIGHLIGHTJS_BASE_URI
       hjs_theme = attr 'highlightjs-theme', DEFAULT_HIGHLIGHTJS_THEME
