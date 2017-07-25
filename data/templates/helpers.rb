@@ -29,12 +29,12 @@ module Slim::Helpers
   # The MathJax configuration.
   MATHJAX_CONFIG = {
     tex2jax: {
-      inlineMath:  [::Asciidoctor::INLINE_MATH_DELIMITERS[:latexmath]],
-      displayMath: [::Asciidoctor::BLOCK_MATH_DELIMITERS[:latexmath]],
+      inlineMath:  [::Asciidoctor::INLINE_MATH_DELIMITERS[:latexmath].inspect],
+      displayMath: [::Asciidoctor::BLOCK_MATH_DELIMITERS[:latexmath].inspect],
       ignoreClass: 'nostem|nolatexmath'
     },
     asciimath2jax: {
-      delimiters:  [::Asciidoctor::BLOCK_MATH_DELIMITERS[:asciimath]],
+      delimiters:  [::Asciidoctor::BLOCK_MATH_DELIMITERS[:asciimath].inspect],
       ignoreClass: 'nostem|noasciimath'
     }
   }.to_json
