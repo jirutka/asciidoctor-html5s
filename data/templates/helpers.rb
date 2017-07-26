@@ -172,7 +172,8 @@ module Slim::Helpers
 
     if title.nil_or_empty?
       # XXX quick hack
-      nested = is_a?(::Asciidoctor::List) && parent.is_a?(::Asciidoctor::List)
+      nested = is_a?(::Asciidoctor::List) &&
+          (parent.is_a?(::Asciidoctor::ListItem) || parent.is_a?(::Asciidoctor::List))
       html_tag_if !nested, :div, attrs, yield
     else
       html_tag :section, attrs do

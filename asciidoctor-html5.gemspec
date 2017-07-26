@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.0'
 
-  s.add_runtime_dependency 'asciidoctor', '1.5.2'
+  s.add_runtime_dependency 'asciidoctor', '~> 1.5.5'
   s.add_runtime_dependency 'slim', '~> 2.1'
   s.add_runtime_dependency 'thread_safe', '~> 0.3.4'
 
