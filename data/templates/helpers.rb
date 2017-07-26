@@ -327,6 +327,10 @@ module Slim::Helpers
     end
   end
 
+  def link_rel
+    'noopener' if (option? 'noopener') || (attr :window) == '_blank'
+  end
+
   #--------------------------------------------------------
   # block_listing
   #

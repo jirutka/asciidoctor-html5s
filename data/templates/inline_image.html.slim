@@ -1,5 +1,5 @@
 span class=[type, role] style=style_value(float: (attr :float))
-  = html_tag_if (attr? :link), :a, {:class=>'image', :href=>(attr :link), :target=>(attr :window)}
+  = html_tag_if (attr? :link), :a, {:class=>'image', :href=>(attr :link), :target=>(attr :window), :rel=>link_rel}
     - if type == 'icon' && font_icons?
       i class=icon_fa_classes title=(attr :title)
     - elsif type == 'icon' && !icons?
