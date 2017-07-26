@@ -1,4 +1,6 @@
-language: ruby
+dist: trusty
 sudo: false
-rvm: 2.1.0
-script: bundle exec rake test
+language: ruby
+rvm: 2.4
+script:
+  - bundle exec rake test
