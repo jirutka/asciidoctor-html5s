@@ -271,6 +271,36 @@ module Slim::Helpers
 
 
   ##
+  # Gets the value of the specified attribute in this node.
+  #
+  # This is just an alias for +attr+ method with disabled _inherit_ to make it
+  # more clear.
+  #
+  # @param name [String, Symbol] the name of the attribute to lookup.
+  # @param default_val the value to return if the attribute is not found.
+  # @return value of the attribute or +default_val+ if not found.
+  #
+  def local_attr(name, default_val = nil)
+    attr(name, default_val, false)
+  end
+
+  ##
+  # Checks if the attribute is defined on this node, optionally performing
+  # a comparison of its value if +expect_val+ is not nil.
+  #
+  # This is just an alias for +attr?+ method with disabled _inherit_ to make it
+  # more clear.
+  #
+  # @param name [String, Symbol] the name of the attribute to lookup.
+  # @param default_val the expected value of the attribute.
+  # @return [Boolean] whether the attribute exists and, if +expect_val+ is
+  #   specified, whether the value of the attribute matches the +expect_val+.
+  #
+  def local_attr?(name, expect_val = nil)
+    attr?(name, expect_val, false)
+  end
+
+  ##
   # @param index [Integer] the footnote's index.
   # @return [String] footnote id to be used in a link.
   def footnote_id(index = (attr :index))
@@ -349,7 +379,7 @@ module Slim::Helpers
   end
 
   def source_lang
-    attr :language, nil, false
+    local_attr :language, false
   end
 
   #--------------------------------------------------------
@@ -387,7 +417,7 @@ is book and it's a child of a book part. Excluding block content."
   end
 
   def spread?
-    if !autowidth? || (attr? 'width', nil, false)
+    if !autowidth? || (local_attr? 'width')
       'spread' if attr? :tablepcwidth, 100
     end
   end
