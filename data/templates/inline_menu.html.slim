@@ -1,4 +1,4 @@
-- if attr :menuitem
+- if local_attr :menuitem
   span.menuseq
     b.menu
       =(attr :menu)
@@ -7,6 +7,6 @@
       b.submenu
         =submenu
         include _menu_caret.html
-    b.menuitem =(attr :menuitem)
+    b.menuitem =(local_attr :menuitem)
 - else
   b.menuref =(attr :menu)
