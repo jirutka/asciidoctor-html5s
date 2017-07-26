@@ -1,10 +1,12 @@
 - if attr :menuitem
   span.menuseq
-    b.menu =(attr :menu)
-    '&#160;&#9656;
+    b.menu
+      =(attr :menu)
+      include _menu_caret.html
     - (attr 'submenus').each do |submenu|
-      b.submenu =submenu
-      '&#160;&#9656;
+      b.submenu
+        =submenu
+        include _menu_caret.html
     b.menuitem =(attr :menuitem)
 - else
   b.menuref =(attr :menu)
