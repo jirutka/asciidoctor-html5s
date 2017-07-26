@@ -383,7 +383,9 @@ is book and it's a child of a book part. Excluding block content."
   end
 
   def spread?
-    'spread' if !(option? 'autowidth') && (attr :tablepcwidth) == 100
+    if !autowidth? || (attr? 'width', nil, false)
+      'spread' if attr? :tablepcwidth, 100
+    end
   end
 
   #--------------------------------------------------------
