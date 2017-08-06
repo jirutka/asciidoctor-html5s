@@ -31,15 +31,16 @@ module Slim::Helpers
     tex2jax: {
       inlineMath:  [::Asciidoctor::INLINE_MATH_DELIMITERS[:latexmath].inspect],
       displayMath: [::Asciidoctor::BLOCK_MATH_DELIMITERS[:latexmath].inspect],
-      ignoreClass: 'nostem|nolatexmath'
+      ignoreClass: 'nostem|nolatexmath',
     },
     asciimath2jax: {
       delimiters:  [::Asciidoctor::BLOCK_MATH_DELIMITERS[:asciimath].inspect],
-      ignoreClass: 'nostem|noasciimath'
+      ignoreClass: 'nostem|noasciimath',
     }
   }.to_json
 
-  VOID_ELEMENTS = %w(area base br col command embed hr img input keygen link meta param source track wbr)
+  VOID_ELEMENTS = %w(area base br col command embed hr img input keygen link
+                     meta param source track wbr)
 
 
   ##
@@ -193,7 +194,7 @@ module Slim::Helpers
       html_tag :div, attrs, yield
     else
       html_tag :figure, attrs do
-        ary = [ yield, html_tag(:figcaption) { captioned_title } ]
+        ary = [yield, html_tag(:figcaption) { captioned_title }]
         ary.reverse! if position == :top
         ary.compact.join("\n")
       end
@@ -214,7 +215,7 @@ module Slim::Helpers
       open, close = ::Asciidoctor::INLINE_MATH_DELIMITERS[type.to_sym]
     end
 
-    unless equation.start_with?(open) && equation.end_with?(close)
+    if !equation.start_with?(open) || !equation.end_with?(close)
       equation = [open, equation, close].join
     end
     equation
@@ -303,14 +304,14 @@ module Slim::Helpers
   ##
   # @param index [Integer] the footnote's index.
   # @return [String] footnote id to be used in a link.
-  def footnote_id(index = (local_attr :index))
+  def footnote_id(index = local_attr(:index))
     "_footnote_#{index}"
   end
 
   ##
   # @param index (see #footnote_id)
   # @return [String] footnoteref id to be used in a link.
-  def footnoteref_id(index = (local_attr :index))
+  def footnoteref_id(index = local_attr(:index))
     "_footnoteref_#{index}"
   end
 
@@ -358,7 +359,7 @@ module Slim::Helpers
   end
 
   def link_rel
-    'noopener' if (option? 'noopener') || (attr :window) == '_blank'
+    'noopener' if option?('noopener') || attr(:window) == '_blank'
   end
 
   #--------------------------------------------------------
@@ -417,7 +418,7 @@ is book and it's a child of a book part. Excluding block content."
   end
 
   def spread?
-    if !autowidth? || (local_attr? 'width')
+    if !autowidth? || local_attr?('width')
       'spread' if attr? :tablepcwidth, 100
     end
   end
@@ -428,11 +429,11 @@ is book and it's a child of a book part. Excluding block content."
 
   # @return [Boolean] +true+ if the video should be embedded in an iframe.
   def video_iframe?
-    ['vimeo', 'youtube'].include?(attr :poster)
+    ['vimeo', 'youtube'].include? attr(:poster)
   end
 
   def video_uri
-    case (attr :poster, '').to_sym
+    case attr(:poster, '').to_sym
     when :vimeo
       params = {
         autoplay: (1 if option? 'autoplay'),
@@ -442,7 +443,7 @@ is book and it's a child of a book part. Excluding block content."
       "//player.vimeo.com/video/#{attr :target}#{start_anchor}#{url_query params}"
 
     when :youtube
-      video_id, list_id = (attr :target).split('/', 2)
+      video_id, list_id = attr(:target).split('/', 2)
       params = {
         rel:      0,
         start:    (attr :start),
@@ -454,7 +455,7 @@ is book and it's a child of a book part. Excluding block content."
       }
       "//www.youtube.com/embed/#{video_id}#{url_query params}"
     else
-      anchor = [(attr :start), (attr :end)].join(',').chomp(',')
+      anchor = [attr(:start), attr(:end)].join(',').chomp(',')
       anchor.prepend('#t=') unless anchor.empty?
       media_uri "#{attr :target}#{anchor}"
     end
@@ -494,7 +495,7 @@ is book and it's a child of a book part. Excluding block content."
     stylesheet = attr :stylesheet
     stylesdir = attr :stylesdir, ''
     default_style = ::Asciidoctor::DEFAULT_STYLESHEET_KEYS.include? stylesheet
-    linkcss = (attr? :linkcss) || safe >= ::Asciidoctor::SafeMode::SECURE
+    linkcss = attr?(:linkcss) || safe >= ::Asciidoctor::SafeMode::SECURE
     ss = ::Asciidoctor::Stylesheets.instance
 
     if linkcss
@@ -508,7 +509,7 @@ is book and it's a child of a book part. Excluding block content."
 
     if attr? :icons, 'font'
       if attr? 'iconfont-remote'
-        styles << { href: (attr 'iconfont-cdn', FONT_AWESOME_URI) }
+        styles << { href: attr('iconfont-cdn', FONT_AWESOME_URI) }
       else
         styles << { href: [stylesdir, "#{attr 'iconfont-name', 'font-awesome'}.css"] }
       end
@@ -521,7 +522,7 @@ is book and it's a child of a book part. Excluding block content."
 
     case attr 'source-highlighter'
     when 'coderay'
-      if (attr 'coderay-css', 'class') == 'class'
+      if attr('coderay-css', 'class') == 'class'
         if linkcss
           styles << { href: [stylesdir, ss.coderay_stylesheet_name] }
         else
