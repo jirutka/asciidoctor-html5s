@@ -575,6 +575,8 @@ is book and it's a child of a book part. Excluding block content."
     str =
       if text
         text
+      elsif (path = local_attr :path)
+        path
       elsif document.respond_to? :catalog  # Asciidoctor >=1.5.6
         ref = document.catalog[:refs][attr :refid]
         if ref.kind_of? Asciidoctor::AbstractNode
