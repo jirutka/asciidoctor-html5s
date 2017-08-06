@@ -576,6 +576,16 @@ is book and it's a child of a book part. Excluding block content."
     str.tr_s("\n", ' ') if str
   end
 
+  # @return [String, nil] text of the bibref anchor, or +nil+ if not found.
+  def bibref_text
+    if document.respond_to? :catalog  # Asciidoctor >=1.5.6
+      # NOTE: Technically it should be `reftext`, but subs have already been applied to text.
+      text
+    else
+      "[#{target}]"
+    end
+  end
+
   #--------------------------------------------------------
   # inline_image
   #
