@@ -1,10 +1,11 @@
-- checklist = 'checklist' if option? 'checklist'
-= block_with_title :class=>['ulist', checklist, style]
+- checklist = 'task-list' if option? 'checklist'
+= block_with_title :class=>['ulist', style]
   ul class=(checklist || style)
     - items.each do |item|
-      li
-        - if checklist && (item.attr? :checkbox)
-          input.checklist-item type='checkbox' disabled=true checked=(item.attr? :checked)
+      - if checklist && (item.attr? :checkbox)
+        li.task-list-item
+          input.task-list-item-checkbox type='checkbox' disabled=true checked=(item.attr? :checked)
           =<item.text
-        - else
+      - else
+        li
           =(print_item_content item)
