@@ -570,10 +570,20 @@ is book and it's a child of a book part. Excluding block content."
   # inline_anchor
   #
 
-  # @return [String, nil] text of the xref anchor, or +nil+ if not found.
+  # @return [String] text of the xref anchor.
   def xref_text
-    str = text || document.references[:ids][attr :refid || target]
-    str.tr_s("\n", ' ') if str
+    str =
+      if text
+        text
+      elsif document.respond_to? :catalog  # Asciidoctor >=1.5.6
+        ref = document.catalog[:refs][attr :refid]
+        if ref.kind_of? Asciidoctor::AbstractNode
+          ref.xreftext((@_xrefstyle ||= document.attributes['xrefstyle']))
+        end
+      else  # Asciidoctor < 1.5.6
+        document.references[:ids][attr :refid || target]
+      end
+    (str || "[#{attr :refid}]").tr_s("\n", ' ')
   end
 
   # @return [String, nil] text of the bibref anchor, or +nil+ if not found.
