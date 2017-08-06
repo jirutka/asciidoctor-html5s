@@ -1,0 +1,5 @@
+// .with_link_and_window_blank
+image::sunset.jpg[link="http://www.flickr.com/photos/javh/5448336655", window=_blank]
+
+// .with_link_and_noopener
+image::sunset.jpg[link="http://www.flickr.com/photos/javh/5448336655", opts=noopener]

@@ -1,3 +1,9 @@
+// .image_with_link_and_window_blank
+image:linux.svg[link="http://inkscape.org/doc/examples/tux.svg", window=_blank]
+
+// .image_with_link_and_noopener
+image:linux.svg[link="http://inkscape.org/doc/examples/tux.svg", opts=noopener]
+
 // .icon_font
 :icons: font
 icon:heart[]
