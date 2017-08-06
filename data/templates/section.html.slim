@@ -3,7 +3,7 @@
   *{:tag=>"h#{section_level + 1}", :id=>id, :class=>('sect0' if sect0)}
     - if id
       - if document.attr? :sectanchors
-        a.anchor href="##{id}"
+        a.anchor href="##{id}" aria-hidden='true'
       - if document.attr? :sectlinks
         a.link href="##{id}" =section_title
       - else
