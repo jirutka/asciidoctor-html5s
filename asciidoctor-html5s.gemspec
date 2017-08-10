@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.0'
 
   s.add_runtime_dependency 'asciidoctor', '~> 1.5.5'
-  s.add_runtime_dependency 'slim', '~> 2.1'
   s.add_runtime_dependency 'thread_safe', '~> 0.3.4'
 
   # XXX: Defined in Gemfile.
@@ -27,4 +26,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'bundler', '~> 1.6'
   s.add_development_dependency 'coderay', '~> 1.1'
   s.add_development_dependency 'rake', '~> 10.0'
+  s.add_development_dependency 'slim', '~> 2.1'
 end
