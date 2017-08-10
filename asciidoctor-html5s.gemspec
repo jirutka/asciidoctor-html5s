@@ -1,14 +1,14 @@
 # coding: utf-8
 
 Gem::Specification.new do |s|
-  s.name          = 'asciidoctor-html5'
+  s.name          = 'asciidoctor-html5s'
   s.version       = '1.0.0.dev'
   s.author        = 'Jakub Jirutka'
   s.email         = 'jakub@jirutka.cz'
-  s.homepage      = 'https://github.com/jirutka/asciidoctor-html5'
+  s.homepage      = 'https://github.com/jirutka/asciidoctor-html5s'
   s.license       = 'MIT'
 
-  s.summary       = 'Semantic HTML5 backend'
+  s.summary       = 'Semantic HTML5 converter (backend) for Asciidoctor'
   #s.description   = 'TODO'
 
   begin
