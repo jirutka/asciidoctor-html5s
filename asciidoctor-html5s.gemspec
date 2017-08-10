@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
 
   # XXX: Defined in Gemfile.
   #s.add_development_dependency 'asciidoctor-doctest', '= 2.0.0.beta.1'
+  s.add_development_dependency 'asciidoctor-templates-compiler', '~> 0.1.2'
   s.add_development_dependency 'bundler', '~> 1.6'
   s.add_development_dependency 'coderay', '~> 1.1'
   s.add_development_dependency 'rake', '~> 10.0'

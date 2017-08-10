@@ -1,3 +1,4 @@
 /pkg/
 *.gem
 Gemfile.lock
+lib/asciidoctor/html5s/converter.rb
