@@ -1,8 +1,9 @@
 # coding: utf-8
+require File.expand_path('lib/asciidoctor/html5s/version', __dir__)
 
 Gem::Specification.new do |s|
   s.name          = 'asciidoctor-html5s'
-  s.version       = '1.0.0.dev'
+  s.version       = Asciidoctor::Html5s::VERSION
   s.author        = 'Jakub Jirutka'
   s.email         = 'jakub@jirutka.cz'
   s.homepage      = 'https://github.com/jirutka/asciidoctor-html5s'
@@ -11,12 +12,7 @@ Gem::Specification.new do |s|
   s.summary       = 'Semantic HTML5 converter (backend) for Asciidoctor'
   #s.description   = 'TODO'
 
-  begin
-    s.files       = `git ls-files -z -- */* {LICENSE,Rakefile,README}*`.split("\x0")
-  rescue
-    s.files       = Dir['**/*']
-  end
-  s.test_files    = s.files.grep(/^test\//)
+  s.files         = Dir['data/**/*', 'lib/**/*', '*.gemspec', 'LICENSE*', 'README*']
   s.has_rdoc      = false
 
   s.required_ruby_version = '>= 2.0'
