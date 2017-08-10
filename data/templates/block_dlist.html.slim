@@ -8,6 +8,6 @@
     dl
       - items.each do |terms, dd|
         - [*terms].each do |dt|
-          dt class=('hdlist1' unless style) =dt.text
+          dt =dt.text
         - unless dd.nil?
           dd =(print_item_content dd)
