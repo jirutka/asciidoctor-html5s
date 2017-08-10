@@ -1,4 +1,4 @@
-- if local_attr :index
-  a.footnote id=(footnoteref_id unless type == :xref) href="##{footnote_id}" title="View footnote." [#{local_attr :index}]
+- if (index = local_attr :index)
+  a.footnote id=(footnoteref_id unless type == :xref) href="##{footnote_id}" title="View footnote #{index}" [#{index}]
 - else
   a.footnote.broken title="Unresolved footnote reference." [#{text}]
