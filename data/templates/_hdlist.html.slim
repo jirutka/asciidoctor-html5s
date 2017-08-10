@@ -6,7 +6,7 @@
         col style=style_value(width: [(attr :itemwidth), '%'])
     - items.each do |terms, dd|
       tr
-        td class=['hdlist1', ('strong' if option? 'strong')]
+        th.hdlist1 class=('strong' if option? 'strong')
           - terms = [*terms]
           - terms.each_with_index do |dt, idx|
             =dt.text
