@@ -1,5 +1,8 @@
-section#footnotes
-  - footnotes.each do |fn|
-    p.footnote id=(footnote_id fn.index)
-      a href="##{footnoteref_id fn.index}" =fn.index
-      | . #{fn.text}
+section.footnotes aria-label='Footnotes'
+  hr
+  ol.footnotes
+    - footnotes.each do |fn|
+      li.footnote id=(footnote_id fn.index)
+        ="#{fn.text} "
+        a.footnote-backref href="##{footnoteref_id fn.index}" title='Jump to the first occurrence in the text'
+          | &#8617;
