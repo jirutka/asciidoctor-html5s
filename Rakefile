@@ -51,8 +51,6 @@ end
 
 begin
   require 'asciidoctor/doctest'
-  require 'thread_safe'
-  require 'tilt'
 
   DocTest::RakeTasks.new(:doctest) do |t|
     t.output_examples :html, path: 'test/examples/html5'
@@ -61,9 +59,19 @@ begin
       'test/examples/asciidoc-html'
     ]
     t.converter = DocTest::HTML::Converter
-    t.converter_opts = { template_dirs: 'data/templates' }
+    t.converter_opts = { backend_name: 'html5s' }
   end
 
+  task 'prepare-converter' do
+    # Run as an external process to ensure that it will not affect tests
+    # environment with extra loaded modules (especially slim).
+    `bundle exec rake build:converter:fast`
+
+    require_relative 'lib/asciidoctor-html5s'
+  end
+
+  task 'doctest:test' => 'prepare-converter'
+  task 'doctest:generate' => 'prepare-converter'
   task :test => 'doctest:test'
   task :default => :test
 
