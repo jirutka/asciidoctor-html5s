@@ -27,7 +27,7 @@
                     - when :asciidoc
                       =cell.content
                     - when :verse
-                      .verse =cell.text
+                      .verse: pre =cell.text
                     - when :literal
                       .literal: pre =cell.text
                     - else
