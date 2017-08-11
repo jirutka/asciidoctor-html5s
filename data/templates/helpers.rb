@@ -50,13 +50,10 @@ module Slim::Helpers
   # @return [String] a rendered HTML element.
   #
   def html_tag(name, attributes = {}, content = nil)
-    attrs = attributes.reject { |_, v|
-      v.nil? || (v.respond_to?(:empty?) && v.empty?)
-    }.map do |k, v|
+    attrs = attributes.inject([]) do |attrs, (k, v)|
+      next attrs if !v || v.nil_or_empty?
       v = v.compact.join(' ') if v.is_a? Array
-      v = nil if v == true
-      v = %("#{v}") if v
-      [k, v] * '='
+      attrs << (v == true ? k : %(#{k}="#{v}"))
     end
     attrs_str = attrs.empty? ? '' : attrs.join(' ').prepend(' ')
 
