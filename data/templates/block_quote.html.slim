@@ -2,4 +2,5 @@
   blockquote
     = html_tag_if !blocks?, :p
       =content
-    include _attribution.html
+    - if attr?(:attribution) || attr?(:citetitle)
+      include _attribution.html
