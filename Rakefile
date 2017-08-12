@@ -9,6 +9,7 @@ namespace :build do
 
   file CONVERTER_FILE, [:mode] => FileList["#{TEMPLATES_DIR}/*"] do |t, args|
     require 'asciidoctor-templates-compiler'
+    require 'slim-htag'
 
     File.open(CONVERTER_FILE, 'w') do |file|
       $stderr.puts "Generating #{file.path}."

@@ -1,6 +1,9 @@
 require 'asciidoctor'
 require 'json'
 
+# Needed only in compile-time.
+require 'slim-htag' if defined? Slim
+
 if Gem::Version.new(Asciidoctor::VERSION) <= Gem::Version.new('1.5.1')
   fail 'asciidoctor: FAILED: HTML5/Slim backend needs Asciidoctor >=1.5.2!'
 end

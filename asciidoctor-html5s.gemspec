@@ -27,4 +27,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'coderay', '~> 1.1'
   s.add_development_dependency 'rake', '~> 10.0'
   s.add_development_dependency 'slim', '~> 2.1'
+  s.add_development_dependency 'slim-htag', '~> 0.1.0'
 end
