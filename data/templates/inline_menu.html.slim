@@ -1,12 +1,18 @@
 - if local_attr :menuitem
+  - capture
+    | &#160;
+    - if font_icons?
+      i.fa.fa-angle-right.caret
+    - else
+      b.caret &#8250;
   span.menuseq
     b.menu
       =(attr :menu)
-      include _menu_caret.html
+      - yield_capture
     - (attr 'submenus').each do |submenu|
       b.submenu
         =submenu
-        include _menu_caret.html
+        - yield_capture
     b.menuitem =(local_attr :menuitem)
 - else
   b.menuref =(attr :menu)
