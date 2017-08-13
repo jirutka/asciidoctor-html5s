@@ -1,4 +1,10 @@
-section.admonitionblock id=id class=[(attr :name), role]
+- capture
   h6 =(title || (attr :name).capitalize)
   = html_tag_if !blocks?, :p
     =content
+- if admonition_aside?
+  aside.admonitionblock id=id class=[(attr :name), role]
+    - yield_capture
+- else
+  section.admonitionblock id=id class=[(attr :name), role]
+    - yield_capture

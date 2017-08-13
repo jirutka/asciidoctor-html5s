@@ -378,6 +378,16 @@ module Slim::Helpers
   end
 
   #--------------------------------------------------------
+  # block_admonition
+  #
+
+  ##
+  # @return [Boolean] should be this admonition wrapped in aside element?
+  def admonition_aside?
+    %w[note tip].include? attr(:name)
+  end
+
+  #--------------------------------------------------------
   # block_listing
   #
 
