@@ -41,6 +41,45 @@ module Slim::Helpers
 
 
   ##
+  # Captures the given block for later yield.
+  #
+  # @example Basic capture usage.
+  #   - capture
+  #     img src=image_uri
+  #   - if title?
+  #     figure.image
+  #       - yield_capture
+  #       figcaption =captioned_title
+  #   - else
+  #     - yield_capture
+  #
+  # @example Capture with passing parameters.
+  #   - capture do |id|
+  #     img src=image_uri
+  #   - if title?
+  #     figure id=@id
+  #       - yield_capture
+  #       figcaption =caption
+  #   - else
+  #     - yield_capture @id
+  #
+  # @see yield_capture
+  def capture(&block)
+    @_html5s_capture = block
+    nil
+  end
+
+  ##
+  # Yields the captured block (see {#capture}).
+  #
+  # @param *params parameters to pass to the block.
+  # @return A content of the captured block.
+  # @see capture
+  def yield_capture(*params)
+    @_html5s_capture.call(*params) if @_html5s_capture
+  end
+
+  ##
   # Creates an HTML tag with the given name and optionally attributes. Can take
   # a block that will run between the opening and closing tags.
   #
