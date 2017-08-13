@@ -17,11 +17,9 @@ module Slim::Helpers
   FONT_AWESOME_URI     = '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css'
   HIGHLIGHTJS_BASE_URI = '//cdnjs.cloudflare.com/ajax/libs/highlight.js/7.4'
   MATHJAX_JS_URI       = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML'
-  PRETTIFY_BASE_URI    = '//cdnjs.cloudflare.com/ajax/libs/prettify/r298'
 
   # Defaults
   DEFAULT_HIGHLIGHTJS_THEME = 'github'
-  DEFAULT_PRETTIFY_THEME = 'prettify'
   DEFAULT_SECTNUMLEVELS = 3
   DEFAULT_TOCLEVELS = 2
 
@@ -370,7 +368,6 @@ module Slim::Helpers
       case (highlighter = document.attr('source-highlighter'))
       when 'coderay'; 'CodeRay'
       when 'highlight.js'; 'highlightjs'
-      when 'prettify'; 'prettyprint'
       else highlighter
       end
   end
@@ -534,14 +531,6 @@ is book and it's a child of a book part. Excluding block content."
       scripts << { src: [hjs_base, 'lang/common.min.js'] }
       scripts << { text: 'hljs.initHighlightingOnLoad()' }
       styles  << { href: [hjs_base, "styles/#{hjs_theme}.min.css"] }
-
-    when 'prettify'
-      prettify_base = attr :prettifydir, PRETTIFY_BASE_URI
-      prettify_theme = attr 'prettify-theme', DEFAULT_PRETTIFY_THEME
-
-      scripts << { src: [prettify_base, 'prettify.min.js'] }
-      scripts << { text: 'document.addEventListener("DOMContentLoaded", prettyPrint)' }
-      styles  << { href: [prettify_base, "#{prettify_theme}.min.css"] }
     end
 
     styles.each do |item|

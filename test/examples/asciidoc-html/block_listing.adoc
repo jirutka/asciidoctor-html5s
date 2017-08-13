@@ -8,8 +8,8 @@
 end
 ----
 
-// .source_highlighter_prettify
-:source-highlighter: prettify
+// .source_highlighter_highlightjs
+:source-highlighter: highlight.js
 
 [source, ruby]
 ----
