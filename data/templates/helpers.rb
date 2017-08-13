@@ -105,24 +105,6 @@ module Slim::Helpers
   end
 
   ##
-  # Surrounds a block with strings, with no whitespace in between.
-  #
-  # @example
-  #   = surround '[', ']' do
-  #     a href="#_footnote_1" 1
-  #
-  #   [<a href="#_footnote_1">1</a>]
-  #
-  # @param front [String] the string to add before the block.
-  # @param back [String] the string to add after the block.
-  # @yield The block of Slim/HTML code to surround.
-  # @return [String] a rendered HTML fragment.
-  #
-  def surround(front, back = front)
-    [front, yield.chomp, back].join
-  end
-
-  ##
   # Wraps a block in a div element with the specified class and optionally
   # the node's +id+ and +role+(s). If the node's +title+ is not empty, then a
   # nested div with the class "title" and the title's content is added as well.
