@@ -1,4 +1,4 @@
-= block_with_title :class=>['colist', style]
-  ol
-    - items.each do |item|
-      li =item.text
+/ Note: We ignore title on callout list here.
+ol.colist id=id class=[style, role]
+  - items.each do |item|
+    li =item.text

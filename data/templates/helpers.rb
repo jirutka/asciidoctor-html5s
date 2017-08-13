@@ -1,4 +1,5 @@
 require 'asciidoctor'
+require 'asciidoctor/html5s'
 require 'json'
 
 # Needed only in compile-time.
@@ -401,6 +402,17 @@ module Slim::Helpers
       when 'highlight.js'; 'highlightjs'
       else highlighter
       end
+  end
+
+  ##
+  # Returns the callout list attached to this listing node, or +nil+ if none.
+  #
+  # Note: This variable is set by extension
+  # {Asciidoctor::Html5s::AttachedColistTreeprocessor}.
+  #
+  # @return [Asciidoctor::List, nil]
+  def callout_list
+    @html5s_colist
   end
 
   def source_lang
