@@ -1,0 +1,47 @@
+= Semantic HTML5 Backend For Asciidoctor
+// custom
+:gem-name: asciidoctor-html5s
+:gh-name: jirutka/{gem-name}
+:gh-branch: master
+
+ifdef::env-github[]
+image:https://travis-ci.org/{gh-name}.svg?branch={gh-branch}[Build Status, link="https://travis-ci.org/{gh-name}"]
+image:https://img.shields.io/gem/v/{gem-name}.svg?style=flat[Gem Version, link="https://rubygems.org/gems/{gem-name}"]
+endif::env-github[]
+
+TODO
+
+
+== Requirements
+
+* https://www.ruby-lang.org/[Ruby] 2.0+ or http://jruby.org/[JRuby] 9.1+
+* https://rubygems.org/gems/asciidoctor/[Asciidoctor] 1.5.5+
+* https://rubygems.org/gems/thread_safe/[thread_safe] (not required, but recommended)
+
+Note: This converter consists of https://github.com/slim-template/slim/[Slim] templates, but they are precompiled into pure Ruby code using https://github.com/jirutka/asciidoctor-templates-compiler/[asciidoctor-templates-compiler], so you don’t need Slim to use it!
+
+
+== Installation
+
+Install {gem-name} from Rubygems:
+
+[source, sh, subs="+attributes"]
+gem install {gem-name}
+
+or to get the latest development version:
+
+[source, sh, subs="+attributes"]
+gem install --pre {gem-name}
+
+
+== Usage
+
+[source, sh, subs="+attributes"]
+asciidoctor -r {gem-name} -b html5s FILE...
+
+
+== License
+
+This project is licensed under http://opensource.org/licenses/MIT/[MIT License].
+For the full text of the license, see the link:LICENSE[LICENSE] file.
+
