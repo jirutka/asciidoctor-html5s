@@ -3,8 +3,8 @@
   = html_tag_if !blocks?, :p
     =content
 - if admonition_aside?
-  aside.admonitionblock id=id class=[(attr :name), role]
+  aside.admonitionblock id=id class=[(attr :name), role] role=admonition_aria
     - yield_capture
 - else
-  section.admonitionblock id=id class=[(attr :name), role]
+  section.admonitionblock id=id class=[(attr :name), role] role=admonition_aria
     - yield_capture

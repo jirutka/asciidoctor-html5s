@@ -388,6 +388,19 @@ module Slim::Helpers
     %w[note tip].include? attr(:name)
   end
 
+  ##
+  # @return [String, nil] WAI-ARIA role of this admonition.
+  def admonition_aria
+    case attr(:name)
+    when 'note'
+      'note'  # https://www.w3.org/TR/wai-aria/roles#note
+    when 'tip'
+      'doc-tip'  # https://www.w3.org/TR/dpub-aria-1.0/#doc-tip
+    when 'caution', 'important', 'warning'
+      'doc-notice'  # https://www.w3.org/TR/dpub-aria-1.0/#doc-notice
+    end
+  end
+
   #--------------------------------------------------------
   # block_listing
   #
