@@ -1,11 +1,12 @@
 = block_with_title :class=>'qlist qanda', :role=>'doc-qna'
-  ol
+  dl.qanda
     - items.each do |questions, answer|
-      li
-        - [*questions].each do |question|
-          p: em =question.text
-        - unless answer.nil?
+      - [*questions].each do |question|
+        dt.qanda-question =question.text
+      - unless answer.nil?
+        dd.qanda-answer
           - if answer.text?
-            p =answer.text
+            = html_tag_if answer.blocks?, :p
+              =answer.text
           - if answer.blocks?
             =answer.content
