@@ -1,5 +1,5 @@
 - capture
-  h6 =(title || (attr :name).capitalize)
+  h6 =(title || caption)
   = html_tag_if !blocks?, :p
     =content
 - if admonition_aside?
