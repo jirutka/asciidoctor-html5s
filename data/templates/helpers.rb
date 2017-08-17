@@ -1,5 +1,6 @@
 require 'asciidoctor'
 require 'asciidoctor/html5s'
+require 'date'
 require 'json'
 
 # Needed only in compile-time.
@@ -523,6 +524,15 @@ is book and it's a child of a book part. Excluding block content."
   #--------------------------------------------------------
   # document
   #
+
+  ##
+  # @return [String, nil] the revision date in ISO 8601, or nil if not
+  #   available or in invalid format.
+  def revdate_iso
+    ::Date.parse(revdate).iso8601
+  rescue ArgumentError
+    nil
+  end
 
   ##
   # Returns HTML meta tag if the given +content+ is not +nil+.

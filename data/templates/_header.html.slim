@@ -19,7 +19,7 @@
         span#revnumber #{((attr 'version-label') || '').downcase} #{attr :revnumber}#{',' if attr? :revdate}
         '
       - if attr? :revdate
-        span#revdate =attr :revdate
+        time#revdate datetime=revdate_iso =(attr :revdate)
       - if attr? :revremark
         br
         span#revremark =(attr :revremark)
