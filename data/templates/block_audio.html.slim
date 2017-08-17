@@ -1,7 +1,7 @@
 = block_with_caption :bottom, :class=>'audioblock'
-  audio(
+  audio [
       src=media_uri(attr :target)
       autoplay=(option? 'autoplay')
       controls=!(option? 'nocontrols')
-      loop=(option? 'loop'))
+      loop=(option? 'loop') ]
     | Your browser does not support the audio tag.
