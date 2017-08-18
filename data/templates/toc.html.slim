@@ -5,5 +5,5 @@
   nav id=toc_id class=(attr :role, (document.attr 'toc-class', 'toc'))
     h level=(section_level + 2) id=("#{toc_id}title" if toc_id)
       =(title || (document.attr 'toc-title'))
-    / Renders block_outline.html.
+    / Renders outline.html.
     = converter.convert document, 'outline', :toclevels=>((attr :levels).to_i if attr? :levels)
