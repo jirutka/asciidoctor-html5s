@@ -1,25 +1,25 @@
-// .image_with_link_and_window_blank
+// .image-with-link-and-window-blank
 image:linux.svg[link="http://inkscape.org/doc/examples/tux.svg", window=_blank]
 
-// .image_with_link_and_noopener
+// .image-with-link-and-noopener
 image:linux.svg[link="http://inkscape.org/doc/examples/tux.svg", opts=noopener]
 
-// .icon_font
+// .icon-font
 :icons: font
 icon:heart[]
 
-// .icon_font_with_title
+// .icon-font-with-title
 :icons: font
 icon:heart[title="I <3 Asciidoctor"]
 
-// .icon_font_with_size
+// .icon-font-with-size
 :icons: font
 icon:shield[2x]
 
-// .icon_font_with_rotate
+// .icon-font-with-rotate
 :icons: font
 icon:shield[rotate=90]
 
-// .icon_font_with_flip
+// .icon-font-with-flip
 :icons: font
 icon:shield[flip=vertical]

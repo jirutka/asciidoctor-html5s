@@ -1,4 +1,4 @@
-// .source_highlighter_coderay
+// .source-highlighter-coderay
 :source-highlighter: coderay
 
 [source, ruby]
@@ -8,7 +8,7 @@
 end
 ----
 
-// .source_highlighter_highlightjs
+// .source-highlighter-highlightjs
 :source-highlighter: highlight.js
 
 [source, ruby]
@@ -18,7 +18,7 @@ end
 end
 ----
 
-// .source_highlighter_html_pipeline
+// .source-highlighter-html-pipeline
 // nowrap should be ignored
 :source-highlighter: html-pipeline
 
