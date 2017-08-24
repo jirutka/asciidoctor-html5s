@@ -9,11 +9,12 @@ Gem::Specification.new do |s|
   s.homepage      = 'https://github.com/jirutka/asciidoctor-html5s'
   s.license       = 'MIT'
 
-  s.summary       = 'Semantic HTML5 converter (backend) for Asciidoctor'
+  s.summary       = 'Semantic HTML5 backend (converter) for Asciidoctor'
   s.description   = <<-EOF
-This project provides alternative HTML5 converter (backend) for Asciidoctor
-that focuses on correct semantics, accessibility and compatibility with common
-typographic CSS styles.
+#{s.summary}
+
+This converter focuses on correct semantics, accessibility and compatibility
+with common typographic CSS styles.
 EOF
 
   s.files         = Dir['data/**/*', 'lib/**/*', '*.gemspec', 'LICENSE*', 'README*']
