@@ -9,7 +9,22 @@ image:https://travis-ci.org/{gh-name}.svg?branch={gh-branch}[Build Status, link=
 image:https://img.shields.io/gem/v/{gem-name}.svg?style=flat[Gem Version, link="https://rubygems.org/gems/{gem-name}"]
 endif::env-github[]
 
-TODO
+This project provides alternative HTML5 converter (backend) for http://asciidoctor.org/[Asciidoctor] that focuses on correct semantics, accessibility and compatibility with common typographic CSS styles.
+
+
+== Goals
+
+* Clean markup with correct HTML5 semantics.
+* Good accessibility for people with disabilities.
+* Compatibility with common typographic CSS styles when possible and especially with GitHub and GitLab.
+* Full standalone converter without fallback to the built-in Asciidoctor converters.
+* Easy to use and integrate into third-party projects.
+* Well readable and maintainable code – this should be never sacrificed for performance (I’m looking at you, Asciidoctor!).
+
+
+== Non-goals
+
+* Compatibility with existing Asciidoctor CSS styles.
 
 
 == Requirements
