@@ -14,3 +14,12 @@ matrix:
   fast_finish: true
 script:
   - bundle exec rake test
+before_deploy:
+  - bundle exec rake build
+deploy:
+  provider: rubygems
+  api_key:
+    secure: "Lq/S22rljsiZBNyfSTSF9wyNiP4s4yjeeHT37vor4CgijvP8CgIJcA6UtUN+EPLe/LlZEir/p8QHTPEwAtCg2ZoU2JmN+ul8IVboHlJ19NVKT92mhKDdGe6P3yKqbqFAEoteT9MXJ3xXysSWnWFLrEPAiOmNhuh+mnPOF8uPdgw="
+  on:
+    rvm: 2.4
+    tags: true
