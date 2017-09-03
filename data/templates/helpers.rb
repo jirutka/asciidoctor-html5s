@@ -97,7 +97,7 @@ module Slim::Helpers
       v = v.compact.join(' ') if v.is_a? Array
       attrs << (v == true ? k : %(#{k}="#{v}"))
     end
-    attrs_str = attrs.empty? ? '' : attrs.join(' ').prepend(' ')
+    attrs_str = attrs.empty? ? '' : ' ' + attrs.join(' ')
 
     if VOID_ELEMENTS.include? name.to_s
       %(<#{name}#{attrs_str}>)
@@ -506,7 +506,7 @@ is book and it's a child of a book part. Excluding block content."
       "//www.youtube.com/embed/#{video_id}#{url_query params}"
     else
       anchor = [attr(:start), attr(:end)].join(',').chomp(',')
-      anchor.prepend('#t=') unless anchor.empty?
+      anchor = '#t=' + anchor unless anchor.empty?
       media_uri "#{attr :target}#{anchor}"
     end
   end
@@ -518,7 +518,7 @@ is book and it's a child of a book part. Excluding block content."
       [k, v] * '='
     }.compact.join('&amp;')
 
-    str.prepend('?') unless str.empty?
+    '?' + str unless str.empty?
   end
 
   #--------------------------------------------------------
