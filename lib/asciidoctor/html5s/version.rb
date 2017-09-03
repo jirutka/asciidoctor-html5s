@@ -1,5 +1,5 @@
 module Asciidoctor
   module Html5s
-    VERSION = '0.1.0.beta.1'
+    VERSION = '0.1.0.beta.1'.freeze
   end
 end
