@@ -3,9 +3,6 @@ require 'asciidoctor/html5s'
 require 'date'
 require 'json'
 
-# Needed only in compile-time.
-require 'slim-htag' if defined? Slim
-
 # Add custom functions to this module that you want to use in your Slim
 # templates. Within the template you can invoke them as top-level functions
 # just like in Haml.
