@@ -1,6 +1,5 @@
-require 'asciidoctor'
 require 'asciidoctor/html5s'
-require 'date'
+require 'date' unless RUBY_PLATFORM == 'opal'
 
 # Add custom functions to this module that you want to use in your Slim
 # templates. Within the template you can invoke them as top-level functions
@@ -527,7 +526,7 @@ is book and it's a child of a book part. Excluding block content."
   # @return [String, nil] the revision date in ISO 8601, or nil if not
   #   available or in invalid format.
   def revdate_iso
-    ::Date.parse(revdate).iso8601
+    ::Date.parse(revdate).iso8601 if defined? ::Date
   rescue ArgumentError
     nil
   end

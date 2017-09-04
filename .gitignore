@@ -1,4 +1,7 @@
+/js/
 /pkg/
+node_modules/
 *.gem
+*.log
 Gemfile.lock
 lib/asciidoctor/html5s/converter.rb

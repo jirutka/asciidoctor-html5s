@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
 gemspec
 
-#gem 'asciidoctor-doctest', git: 'https://github.com/asciidoctor/asciidoctor-doctest.git', ref: 'c64a39e'
+group :development do
+  # Keep in sync with version used for asciidoctor.js.
+  gem 'opal', '~> 0.11.0'
+end

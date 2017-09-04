@@ -1,0 +1,36 @@
+{
+  "name": "asciidoctor-html5s",
+  "version": "0.1.0-beta.4",
+  "description": "Semantic HTML5 backend (converter) for Asciidoctor",
+  "main": "js/asciidoctor-html5s.js",
+  "files": [
+    "js/asciidoctor-html5s.js",
+    "LICENSE",
+    "README.adoc"
+  ],
+  "scripts": {
+    "prepublishOnly": "bundle install && bundle exec rake build:js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jirutka/asciidoctor-html5s.git"
+  },
+  "keywords": [
+    "asciidoc",
+    "asciidoctor",
+    "template",
+    "backend",
+    "html5",
+    "opal"
+  ],
+  "author": "Jakub Jirutka <jakub@jirutka.cz>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jirutka/asciidoctor-html5s/issues"
+  },
+  "homepage": "https://github.com/jirutka/asciidoctor-html5s",
+  "dependencies": {
+    "asciidoctor.js": "^1.5.5-5",
+    "opal-runtime": "^0.11.0-integration8"
+  }
+}

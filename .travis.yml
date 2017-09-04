@@ -17,6 +17,7 @@ matrix:
   fast_finish: true
 script:
   - bundle exec rake test
+  - bundle exec rake build:js
 before_deploy:
   - bundle exec rake build
 deploy:
