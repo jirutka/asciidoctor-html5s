@@ -349,7 +349,7 @@ module Slim::Helpers
   # @return [Integer]
   #
   def section_level(sec = self)
-    @_section_level ||= (sec.level == 0 && sec.special) ? 1 : sec.level
+    (sec.level == 0 && sec.special) ? 1 : sec.level
   end
 
   ##
