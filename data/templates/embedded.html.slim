@@ -1,5 +1,7 @@
 - if !notitle && has_header?
   h1 id=id =header.title
+- if node.sections? && (attr? :toc) && (attr 'toc-placement', 'auto') == 'auto'
+  include _toc.html
 =content
 - if footnotes? && !(attr? :nofootnotes)
   include _footnotes.html
