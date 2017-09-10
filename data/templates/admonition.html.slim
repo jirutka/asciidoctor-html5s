@@ -1,5 +1,5 @@
 - capture
-  h6 =(title || caption)
+  h6.block-title =(title || caption)
   = html_tag_if !blocks?, :p
     =content
 - if admonition_aside?

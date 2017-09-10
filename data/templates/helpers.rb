@@ -188,7 +188,7 @@ module Slim::Helpers
       html_tag_if !nested, :div, attrs, yield
     else
       html_tag :section, attrs do
-        [html_tag(:h6, {}, title), yield].join("\n")
+        [html_tag(:h6, {class: 'block-title'}, title), yield].join("\n")
       end
     end
   end
