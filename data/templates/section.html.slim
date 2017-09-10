@@ -1,4 +1,4 @@
-section class=["sect#{section_level}", role]
+section.doc-section class=["level-#{section_level}", role]
   h level=(section_level + 1) id=id
     - if id
       - if document.attr? :sectanchors
