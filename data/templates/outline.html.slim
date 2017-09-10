@@ -1,7 +1,7 @@
 - unless sections.empty?
   - toclevels ||= (document.attr 'toclevels', DEFAULT_TOCLEVELS).to_i
   - slevel = section_level sections.first
-  ol class="sectlevel#{slevel}"
+  ol.toc-list class="level-#{slevel}"
     - sections.each do |sec|
       li
         a href="##{sec.id}" =section_title sec
