@@ -2,7 +2,7 @@
 / see document.html, preamble.html and _toc.html.
 - if document.attr? :toc
   - toc_id = id || ('toc' if document.embedded? || !document.attr?('toc-placement'))
-  nav id=toc_id class=(attr :role, (document.attr 'toc-class', 'toc'))
+  nav id=toc_id class=(attr :role, (document.attr 'toc-class', 'toc')) role='doc-toc'
     h level=(section_level + 2) id=("#{toc_id}title" if toc_id)
       =(title || (document.attr 'toc-title'))
     / Renders outline.html.
