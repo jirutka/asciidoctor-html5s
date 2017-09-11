@@ -1,5 +1,7 @@
 - capture
-  h6.block-title =(title || caption)
+  h6.block-title class=('label-only' unless title?)
+    span.title-label ="#{local_attr :textlabel}: "
+    =title
   = html_tag_if !blocks?, :p
     =content
 - if admonition_aside?
