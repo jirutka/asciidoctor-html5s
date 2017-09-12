@@ -20,6 +20,7 @@ deploy:
   provider: rubygems
   api_key:
     secure: "Lq/S22rljsiZBNyfSTSF9wyNiP4s4yjeeHT37vor4CgijvP8CgIJcA6UtUN+EPLe/LlZEir/p8QHTPEwAtCg2ZoU2JmN+ul8IVboHlJ19NVKT92mhKDdGe6P3yKqbqFAEoteT9MXJ3xXysSWnWFLrEPAiOmNhuh+mnPOF8uPdgw="
+  skip_cleanup: true
   on:
     rvm: 2.4
     tags: true
