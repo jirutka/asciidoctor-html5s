@@ -17,7 +17,7 @@
             tr
               - row.each do |cell|
                 = html_tag(tblsec == :head || cell.style == :header ? 'th' : 'td',
-                    :class=>['tableblock', "halign-#{cell.attr :halign}", "valign-#{cell.attr :valign}"],
+                    :class=>["halign-#{cell.attr :halign}", "valign-#{cell.attr :valign}"],
                     :colspan=>cell.colspan,
                     :rowspan=>cell.rowspan,
                     :style=>style_value(background_color: (document.attr :cellbgcolor)))
