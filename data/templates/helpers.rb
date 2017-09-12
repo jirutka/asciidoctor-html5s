@@ -144,27 +144,27 @@ module Slim::Helpers
   # nested div with the class "title" and the title's content is added as well.
   #
   # @example When @id, @role and @title attributes are set.
-  #   = block_with_title :class=>['quoteblock', 'center']
+  #   = block_with_title :class=>['quote-block', 'center']
   #     blockquote =content
   #
-  #   <section id="myid" class="quoteblock center myrole1 myrole2">
+  #   <section id="myid" class="quote-block center myrole1 myrole2">
   #     <h6>Block Title</h6>
   #     <blockquote>Lorem ipsum</blockquote>
   #   </section>
   #
   # @example When @id, @role and @title attributes are empty.
-  #   = block_with_title :class=>'quoteblock center', :style=>style_value(float: 'left')
+  #   = block_with_title :class=>'quote-block center', :style=>style_value(float: 'left')
   #     blockquote =content
   #
-  #   <div class="quoteblock center" style="float: left;">
+  #   <div class="quote-block center" style="float: left;">
   #     <blockquote>Lorem ipsum</blockquote>
   #   </div>
   #
   # @example When shorthand style for class attribute is used.
-  #   = block_with_title 'quoteblock center'
+  #   = block_with_title 'quote-block center'
   #     blockquote =content
   #
-  #   <div class="quoteblock center">
+  #   <div class="quote-block center">
   #     <blockquote>Lorem ipsum</blockquote>
   #   </div>
   #
