@@ -325,14 +325,6 @@ module Slim::Helpers
     "_footnoteref_#{index}"
   end
 
-  def icons?
-    document.attr? :icons
-  end
-
-  def font_icons?
-    document.attr? :icons, 'font'
-  end
-
   def nowrap?
     'nowrap' if !document.attr?(:prewrap) || option?('nowrap')
   end

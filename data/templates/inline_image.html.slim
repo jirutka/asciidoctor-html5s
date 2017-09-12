@@ -1,7 +1,7 @@
 = html_tag_if((attr? :link), :a, :class=>'image', :href=>(attr :link), :target=>(attr :window), :rel=>link_rel)
-  - if type == 'icon' && font_icons?
+  - if type == 'icon' && (document.attr? :icons, 'font')
     i class=[*icon_fa_classes, role] title=(attr :title)
-  - elsif type == 'icon' && !icons?
+  - elsif type == 'icon' && !(document.attr? :icons)
     b class=['icon', role] title=(attr :title)
       | [#{attr :alt}]
   - else
