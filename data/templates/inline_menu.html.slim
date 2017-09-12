@@ -1,10 +1,7 @@
 - if local_attr :menuitem
   - capture
     | &#160;
-    - if font_icons?
-      i.fa.fa-angle-right.caret
-    - else
-      b.caret &#8250;
+    b.caret &#8250;
   span.menuseq
     b.menu
       =(attr :menu)
