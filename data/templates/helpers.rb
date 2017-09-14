@@ -274,8 +274,8 @@ module Slim::Helpers
   def urlize(*segments)
     path = segments * '/'
     if path.start_with? '//'
-      @_uri_scheme ||= document.attr('asset-uri-scheme', 'https')
-      path = "#{@_uri_scheme}:#{path}" unless @_uri_scheme.empty?
+      @_html5s_uri_scheme ||= document.attr('asset-uri-scheme', 'https')
+      path = "#{@_html5s_uri_scheme}:#{path}" unless @_html5s_uri_scheme.empty?
     end
     normalize_web_path path
   end
@@ -395,7 +395,7 @@ module Slim::Helpers
   # @return [String] a canonical name of the source-highlighter to be used as
   #         a style class.
   def highlighter
-    @_highlighter ||=
+    @_html5s_highlighter ||=
       case (highlighter = document.attr('source-highlighter'))
       when 'coderay'; 'CodeRay'
       when 'highlight.js'; 'highlightjs'
@@ -617,7 +617,7 @@ is book and it's a child of a book part. Excluding block content."
       elsif document.respond_to? :catalog  # Asciidoctor >=1.5.6
         ref = document.catalog[:refs][attr :refid]
         if ref.kind_of? Asciidoctor::AbstractNode
-          ref.xreftext((@_xrefstyle ||= document.attributes['xrefstyle']))
+          ref.xreftext((@_html5s_xrefstyle ||= document.attributes['xrefstyle']))
         end
       else  # Asciidoctor < 1.5.6
         document.references[:ids][attr :refid || target]
