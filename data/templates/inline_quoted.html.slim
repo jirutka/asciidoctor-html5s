@@ -20,7 +20,7 @@
   = html_tag_if role?, :span, :class=>role
     | &#8216;#{text}&#8217;
 - when :asciimath, :latexmath
-  span.math =delimit_stem text, type
+  span.math data-lang=stem_lang =(delimit_stem text, type)
 - else
   = html_tag_if role?, :span, :class=>role
     =text

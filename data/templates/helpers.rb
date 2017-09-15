@@ -1,7 +1,6 @@
 require 'asciidoctor'
 require 'asciidoctor/html5s'
 require 'date'
-require 'json'
 
 # Add custom functions to this module that you want to use in your Slim
 # templates. Within the template you can invoke them as top-level functions
@@ -11,25 +10,29 @@ module Slim::Helpers
   # URIs of external assets.
   FONT_AWESOME_URI     = '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css'
   HIGHLIGHTJS_BASE_URI = '//cdnjs.cloudflare.com/ajax/libs/highlight.js/7.4'
-  MATHJAX_JS_URI       = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML'
+  KATEX_CSS_URI        = '//cdn.jsdelivr.net/npm/katex@0.8.3/dist/katex.min.css'
+  KATEX_JS_URI         = '//cdn.jsdelivr.net/npm/katex@0.8.3/dist/katex.min.js'
 
   # Defaults
   DEFAULT_HIGHLIGHTJS_THEME = 'github'
   DEFAULT_SECTNUMLEVELS = 3
   DEFAULT_TOCLEVELS = 2
 
-  # The MathJax configuration.
-  MATHJAX_CONFIG = {
-    tex2jax: {
-      inlineMath:  [::Asciidoctor::INLINE_MATH_DELIMITERS[:latexmath].inspect],
-      displayMath: [::Asciidoctor::BLOCK_MATH_DELIMITERS[:latexmath].inspect],
-      ignoreClass: 'nostem|nolatexmath',
-    },
-    asciimath2jax: {
-      delimiters:  [::Asciidoctor::BLOCK_MATH_DELIMITERS[:asciimath].inspect],
-      ignoreClass: 'nostem|noasciimath',
-    }
-  }.to_json
+  KATEX_RENDER_CODE = <<-JS.gsub(/\s+/, ' ')
+    document.addEventListener("DOMContentLoaded", function() {
+      var elements = document.getElementsByClassName("math");
+      for (var i = 0; i < elements.length; i++) {
+        var el = elements[i];
+        if (el.getAttribute("data-lang") !== "tex") {
+          continue;
+        }
+        katex.render(el.textContent.slice(2, -2), el, {
+          "displayMode": el.nodeName.toUpperCase() !== "SPAN",
+          "throwOnError": false,
+        });
+      }
+    });
+  JS
 
   VOID_ELEMENTS = %w(area base br col command embed hr img input keygen link
                      meta param source track wbr)
@@ -214,6 +217,9 @@ module Slim::Helpers
   ##
   # Delimite the given equation as a STEM of the specified type.
   #
+  # Note: This is not needed nor used for KaTeX, but keep this for the case
+  # user wants to use a different method.
+  #
   # @param equation [String] the equation to delimite.
   # @param type [#to_sym] the type of the STEM renderer (latexmath, or asciimath).
   # @return [String] the delimited equation.
@@ -358,6 +364,13 @@ module Slim::Helpers
     else
       sec.captioned_title
     end
+  end
+
+  ##
+  # @return [String] language of STEM block or inline node (tex or asciimath).
+  def stem_lang
+    value = (inline? ? type : style).to_s
+    value == 'latexmath' ? 'tex' : value
   end
 
   def link_rel
@@ -560,8 +573,9 @@ is book and it's a child of a book part. Excluding block content."
     end
 
     if attr? 'stem'
-      scripts << { src: MATHJAX_JS_URI }
-      scripts << { type: 'text/x-mathjax-config', text: "MathJax.Hub.Config(#{MATHJAX_CONFIG});" }
+      styles << { href: KATEX_CSS_URI }
+      scripts << { src: KATEX_JS_URI }
+      scripts << { text: KATEX_RENDER_CODE }
     end
 
     case attr 'source-highlighter'
