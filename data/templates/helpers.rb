@@ -9,7 +9,7 @@ module Slim::Helpers
 
   # URIs of external assets.
   FONT_AWESOME_URI     = '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css'
-  HIGHLIGHTJS_BASE_URI = '//cdnjs.cloudflare.com/ajax/libs/highlight.js/7.4'
+  HIGHLIGHTJS_BASE_URI = '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/'
   KATEX_CSS_URI        = '//cdn.jsdelivr.net/npm/katex@0.8.3/dist/katex.min.css'
   KATEX_JS_URI         = '//cdn.jsdelivr.net/npm/katex@0.8.3/dist/katex.min.js'
 
@@ -593,7 +593,6 @@ is book and it's a child of a book part. Excluding block content."
       hjs_theme = attr 'highlightjs-theme', DEFAULT_HIGHLIGHTJS_THEME
 
       scripts << { src: [hjs_base, 'highlight.min.js'] }
-      scripts << { src: [hjs_base, 'lang/common.min.js'] }
       scripts << { text: 'hljs.initHighlightingOnLoad()' }
       styles  << { href: [hjs_base, "styles/#{hjs_theme}.min.css"] }
     end
