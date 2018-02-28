@@ -1,0 +1,5 @@
+// .role-line-through
+[line-through]#striked text#
+
+// .role-del
+[del]#striked text#

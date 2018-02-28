@@ -22,5 +22,8 @@
 - when :asciimath, :latexmath
   span.math data-lang=stem_lang =(delimit_stem text, type)
 - else
-  = html_tag_if role?, :span, :class=>role
-    =text
+  - if role == 'line-through' || role == 'del'
+    del =text
+  - else
+    = html_tag_if role?, :span, :class=>role
+      =text
