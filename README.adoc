@@ -7,6 +7,7 @@
 ifdef::env-github[]
 image:https://travis-ci.org/{gh-name}.svg?branch={gh-branch}[Build Status, link="https://travis-ci.org/{gh-name}"]
 image:https://img.shields.io/gem/v/{gem-name}.svg?style=flat[Gem Version, link="https://rubygems.org/gems/{gem-name}"]
+image:https://img.shields.io/npm/v/{gem-name}.svg?style=flat[npm Version, link="https://www.npmjs.org/package/{gem-name}"]
 endif::env-github[]
 
 This project provides alternative HTML5 converter (backend) for http://asciidoctor.org/[Asciidoctor] that focuses on correct semantics, accessibility and compatibility with common typographic CSS styles.
