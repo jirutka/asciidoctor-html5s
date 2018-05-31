@@ -101,6 +101,7 @@ def build_converter(mode = :pretty)
         basebackend: 'html',
         outfilesuffix: '.html',
         filetype: 'html',
+        supports_templates: true
       },
       engine_opts: {
         generator: generator,
