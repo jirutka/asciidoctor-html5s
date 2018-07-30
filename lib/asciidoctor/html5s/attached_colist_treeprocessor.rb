@@ -9,16 +9,20 @@ module Asciidoctor::Html5s
   class AttachedColistTreeprocessor < ::Asciidoctor::Extensions::Treeprocessor
 
     def process(document)
-      document.find_by(context: :colist) do |colist|
+      # XXX: We have to defer deletion of the original colist nodes after
+      # the #find_by iteration is done to make it work under Opal.
+      # See <https://github.com/jirutka/asciidoctor-html5s/issues/7>.
+      document.find_by(context: :colist).reduce([]) { |memo, colist|
         blocks = colist.parent.blocks
         colist_idx = blocks.find_index(colist)
         prev_block = blocks[colist_idx - 1] if colist_idx
 
         if prev_block && prev_block.node_name == 'listing'
-          blocks.delete_at(colist_idx)  # mutates node's blocks list!
           prev_block.instance_variable_set(:@html5s_colist, colist)
+          memo << ->() { blocks.delete_at(colist_idx) }  # mutates node's blocks list!
         end
-      end
+        memo
+      }.each(&:call)
     end
   end
 end
