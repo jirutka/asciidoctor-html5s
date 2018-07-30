@@ -18,7 +18,6 @@ with common typographic CSS styles.
 EOF
 
   s.files         = Dir['data/**/*', 'lib/**/*', '*.gemspec', 'LICENSE*', 'README*']
-  s.has_rdoc      = false
 
   s.required_ruby_version = '>= 2.0'
 
