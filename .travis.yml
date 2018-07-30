@@ -1,39 +1,65 @@
 dist: trusty
 sudo: false
 language: ruby
-rvm:
-  - 2.5
-  - 2.4
-  - 2.3
-  - 2.2
-  - 2.1
-  - jruby
-  - ruby-head
-  - jruby-head
-matrix:
+
+jobs:
+  include:
+    - env: &adoc-latest ASCIIDOCTOR_VERSION=1.5.7.1
+      rvm: &ruby-latest 2.5
+    - env: *adoc-latest
+      rvm: 2.4
+    - env: *adoc-latest
+      rvm: 2.3
+    - env: *adoc-latest
+      rvm: 2.2
+    - env: *adoc-latest
+      rvm: 2.1
+    - env: *adoc-latest
+      rvm: jruby-9.1
+    - env: *adoc-latest
+      rvm: ruby-head
+    - env: *adoc-latest
+      rvm: jruby-head
+
+    - env: ASCIIDOCTOR_VERSION=1.5.6
+      rvm: 2.4
+
+    - env: ASCIIDOCTOR_VERSION=1.5.6.2
+      rvm: 2.4
+
+    - env: ASCIIDOCTOR_VERSION=1.5.7
+      rvm: *ruby-latest
+
+    - env: ASCIIDOCTOR_VERSION="git:master"
+      rvm: *ruby-latest
+
   allow_failures:
-    - rvm: ruby-head
-    - rvm: jruby-head
-  fast_finish: true
+    - env: *adoc-latest
+      rvm: ruby-head
+    - env: *adoc-latest
+      rvm: jruby-head
+    - env: ASCIIDOCTOR_VERSION="git:master"
+      rvm: *ruby-latest
+
 script:
   - bundle exec rake test
   - bundle exec rake build:js
+
 before_deploy:
   - bundle exec rake build
   - bundle exec rake build:js
+
 deploy:
   - provider: rubygems
     api_key:
       secure: "Lq/S22rljsiZBNyfSTSF9wyNiP4s4yjeeHT37vor4CgijvP8CgIJcA6UtUN+EPLe/LlZEir/p8QHTPEwAtCg2ZoU2JmN+ul8IVboHlJ19NVKT92mhKDdGe6P3yKqbqFAEoteT9MXJ3xXysSWnWFLrEPAiOmNhuh+mnPOF8uPdgw="
     skip_cleanup: true
     on:
-      rvm: 2.5
-      tags: true
+      condition: ${TRAVIS_JOB_NUMBER#*.} = 1
   - provider: npm
     email: jakub@jirutka.cz
     api_key:
       secure: "FfIMyNE7R8k4YObB/zNpkUKSCM2S2oQrrze2SgJIZYbGSs76qAwREYGWsArt+Zox9BavTj4xM7cGEZnGOgf564MO6+tWxOcodveTg3qVrJR4pzXHZ6P1ycU4MdE7/aqERTx7Mf5r0vX6u9cDu2sLpHvrJZ/pQDGsSbeXFxzYL2E="  # ...ac690a2a
     skip_cleanup: true
     on:
-      rvm: 2.5
-      tags: true
+      condition: ${TRAVIS_JOB_NUMBER#*.} = 1
