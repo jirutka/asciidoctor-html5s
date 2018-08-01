@@ -55,6 +55,7 @@ deploy:
       secure: "Lq/S22rljsiZBNyfSTSF9wyNiP4s4yjeeHT37vor4CgijvP8CgIJcA6UtUN+EPLe/LlZEir/p8QHTPEwAtCg2ZoU2JmN+ul8IVboHlJ19NVKT92mhKDdGe6P3yKqbqFAEoteT9MXJ3xXysSWnWFLrEPAiOmNhuh+mnPOF8uPdgw="
     skip_cleanup: true
     on:
+      tags: true
       condition: ${TRAVIS_JOB_NUMBER#*.} = 1
   - provider: npm
     email: jakub@jirutka.cz
@@ -62,4 +63,5 @@ deploy:
       secure: "FfIMyNE7R8k4YObB/zNpkUKSCM2S2oQrrze2SgJIZYbGSs76qAwREYGWsArt+Zox9BavTj4xM7cGEZnGOgf564MO6+tWxOcodveTg3qVrJR4pzXHZ6P1ycU4MdE7/aqERTx7Mf5r0vX6u9cDu2sLpHvrJZ/pQDGsSbeXFxzYL2E="  # ...ac690a2a
     skip_cleanup: true
     on:
+      tags: true
       condition: ${TRAVIS_JOB_NUMBER#*.} = 1
