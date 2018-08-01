@@ -1,6 +1,6 @@
 {
   "name": "asciidoctor-html5s",
-  "version": "0.1.0-beta.5",
+  "version": "0.1.0-beta.6",
   "description": "Semantic HTML5 backend (converter) for Asciidoctor",
   "main": "js/asciidoctor-html5s.js",
   "files": [
