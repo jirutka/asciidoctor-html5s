@@ -224,6 +224,10 @@ module Slim::Helpers
   # @return [String] the delimited equation.
   #
   def delimit_stem(equation, type)
+    if (@_html5s_stem_type ||= document.attr('html5s-force-stem-type'))
+      type = @_html5s_stem_type
+    end
+
     if is_a? ::Asciidoctor::Block
       open, close = ::Asciidoctor::BLOCK_MATH_DELIMITERS[type.to_sym]
     else

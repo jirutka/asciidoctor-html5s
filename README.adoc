@@ -83,6 +83,15 @@ console.log(html)
 ----
 
 
+=== Attributes
+
+Extra attributes accepted by the {gem-name}:
+
+html5s-force-stem-type::
+  Ignore declared (e.g. `:stem: asciimath`, `asciimath:[]`, ...) and default type of the stem macro/block and always use the one specified by this attribute. +
+  Asciidoctor hard-codes the default stem type to “asciimath”, which is not supported by KaTeX.
+
+
 == License
 
 This project is licensed under http://opensource.org/licenses/MIT/[MIT License].
