@@ -1,4 +1,5 @@
 require 'asciidoctor/html5s'
+require 'asciidoctor/html5s/logger'
 require 'date' unless RUBY_PLATFORM == 'opal'
 
 # Add custom functions to this module that you want to use in your Slim
@@ -36,6 +37,11 @@ module Slim::Helpers
   VOID_ELEMENTS = %w(area base br col command embed hr img input keygen link
                      meta param source track wbr)
 
+
+  # @return [Logger]
+  def log
+    @_html5s_logger ||= ::Asciidoctor::Html5s::Logging.default_logger
+  end
 
   ##
   # Captures the given block for later yield.
@@ -443,7 +449,7 @@ module Slim::Helpers
   # otherwise prints warning and returns +false+.
   def abstract_allowed?
     if result = (parent == document && document.doctype == 'book')
-      puts 'asciidoctor: WARNING: abstract block cannot be used in a document
+      log.warn 'asciidoctor: WARNING: abstract block cannot be used in a document
 without a title when doctype is book. Excluding block content.'
     end
     !result
@@ -454,7 +460,7 @@ without a title when doctype is book. Excluding block content.'
   # prints warning and returns +false+.
   def partintro_allowed?
     if result = (level != 0 || parent.context != :section || document.doctype != 'book')
-      puts "asciidoctor: ERROR: partintro block can only be used when doctype
+      log.warn "asciidoctor: ERROR: partintro block can only be used when doctype
 is book and it's a child of a book part. Excluding block content."
     end
     !result
