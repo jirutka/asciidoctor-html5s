@@ -4,4 +4,6 @@ node_modules/
 *.gem
 *.log
 Gemfile.lock
+package-lock.json
+yarn.lock
 lib/asciidoctor/html5s/converter.rb
