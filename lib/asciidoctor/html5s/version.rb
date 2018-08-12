@@ -2,6 +2,6 @@
 
 module Asciidoctor
   module Html5s
-    VERSION = '0.1.0.beta.6'
+    VERSION = '0.1.0.beta.7'
   end
 end
