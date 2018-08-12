@@ -2,14 +2,11 @@
   "name": "asciidoctor-html5s",
   "version": "0.1.0-beta.6",
   "description": "Semantic HTML5 backend (converter) for Asciidoctor",
-  "main": "dist/asciidoctor-html5s.js",
-  "files": [
-    "dist/asciidoctor-html5s.js",
-    "LICENSE",
-    "README.adoc"
-  ],
-  "scripts": {
-    "prepublishOnly": "bundle install && bundle exec rake build:js"
+  "author": "Jakub Jirutka <jakub@jirutka.cz>",
+  "license": "MIT",
+  "homepage": "https://github.com/jirutka/asciidoctor-html5s",
+  "bugs": {
+    "url": "https://github.com/jirutka/asciidoctor-html5s/issues"
   },
   "repository": {
     "type": "git",
@@ -23,12 +20,15 @@
     "html5",
     "opal"
   ],
-  "author": "Jakub Jirutka <jakub@jirutka.cz>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jirutka/asciidoctor-html5s/issues"
+  "main": "dist/asciidoctor-html5s.js",
+  "files": [
+    "dist/asciidoctor-html5s.js",
+    "LICENSE",
+    "README.adoc"
+  ],
+  "scripts": {
+    "prepublishOnly": "bundle install && bundle exec rake build:js"
   },
-  "homepage": "https://github.com/jirutka/asciidoctor-html5s",
   "dependencies": {
     "asciidoctor.js": "^1.5.6",
     "opal-runtime": "^1.0.3"
