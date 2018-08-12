@@ -30,7 +30,7 @@
     "prepublishOnly": "bundle install && bundle exec rake build:js"
   },
   "dependencies": {
-    "asciidoctor.js": "^1.5.6",
+    "asciidoctor.js": "~1.5.6",
     "opal-runtime": "^1.0.3"
   }
 }
