@@ -31,10 +31,13 @@ namespace :build do
       dynamic_require_severity: :error,
     })
     builder.append_paths 'lib'
-    builder.build 'asciidoctor-html5s'
+    builder.build 'asciidoctor/html5s'
 
     mkdir_p File.dirname(JS_FILE)
-    File.binwrite JS_FILE, builder.to_s
+    File.open(JS_FILE, 'w') do |file|
+      template = File.read('src/asciidoctor-html5s.tmpl.js')
+      file << template.sub('//OPAL-GENERATED-CODE//', builder.to_s)
+    end
     File.binwrite "#{JS_FILE}.map", builder.source_map
   end
 end

@@ -74,7 +74,10 @@ asciidoctor -r {gem-name} -b html5s FILE...
 ----
 // Load asciidoctor.js and {gem-name}.
 const asciidoctor = require('asciidoctor.js')()
-require('{gem-name}')
+const asciidoctorHtml5s = require('{gem-name}')
+
+// Register the HTML5s converter and supporting extension.
+asciidoctorHtml5s.register()
 
 // Convert the content to HTML using html5s converter.
 const content = "Hello, *world!*!"
