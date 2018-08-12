@@ -1,4 +1,4 @@
-/js/
+/dist/
 /pkg/
 node_modules/
 *.gem

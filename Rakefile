@@ -4,7 +4,7 @@ require 'rake/clean'
 
 BACKEND_NAME = 'html5s'
 CONVERTER_FILE = 'lib/asciidoctor/html5s/converter.rb'
-JS_FILE = 'js/asciidoctor-html5s.js'
+JS_FILE = 'dist/asciidoctor-html5s.js'
 TEMPLATES_DIR = 'data/templates'
 
 
