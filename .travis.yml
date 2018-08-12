@@ -60,7 +60,7 @@ deploy:
   - provider: npm
     email: jakub@jirutka.cz
     api_key:
-      secure: "FfIMyNE7R8k4YObB/zNpkUKSCM2S2oQrrze2SgJIZYbGSs76qAwREYGWsArt+Zox9BavTj4xM7cGEZnGOgf564MO6+tWxOcodveTg3qVrJR4pzXHZ6P1ycU4MdE7/aqERTx7Mf5r0vX6u9cDu2sLpHvrJZ/pQDGsSbeXFxzYL2E="  # ...ac690a2a
+      secure: "ep+c5AmUy7wyl+mEuzVs+iV1a5wR5Kz7jzwC4KokF9zE7tDuPj7bCJorz+ZFC+IuzumBAKm4I8bSpnB6tqs/KEEoXnuSlMa94R3NlZ16xNuAVRRmXIxBzb6aF/ihF7p1yuXH2PWf8MqN82h/1XXiMHPYJnt2sToQnER60YyG0tM="  # 837f......d9f3
     skip_cleanup: true
     on:
       tags: true
