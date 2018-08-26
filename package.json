@@ -29,8 +29,10 @@
   "scripts": {
     "prepublishOnly": "bundle install && bundle exec rake build:js"
   },
-  "dependencies": {
-    "asciidoctor.js": "~1.5.6",
-    "opal-runtime": "^1.0.3"
+  "devDependencies": {
+    "asciidoctor.js": "~1.5.6"
+  },
+  "peerDependencies": {
+    "asciidoctor.js": "~1.5.6"
   }
 }
