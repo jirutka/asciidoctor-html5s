@@ -1,6 +1,6 @@
 {
   "name": "asciidoctor-html5s",
-  "version": "0.1.0-beta.7",
+  "version": "0.1.0-beta.8",
   "description": "Semantic HTML5 backend (converter) for Asciidoctor",
   "author": "Jakub Jirutka <jakub@jirutka.cz>",
   "license": "MIT",
