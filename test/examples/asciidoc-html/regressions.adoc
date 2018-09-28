@@ -1,0 +1,24 @@
+// .issue-10-two-sources-with-collist
+[source]
+----
+source 1 line 1 // <1>
+source 1 line 2 // <2>
+----
+<1> source 1 callout 1
+<2> source 1 callout 2
+
+Some text in here.
+
+[source]
+----
+source 2 line 1 // <1>
+source 2 line 2 // <2>
+----
+<1> source 2 callout 1
+<2> source 2 callout 2
+
+Where is this?
+
+== Heading
+
+This is actually here.
