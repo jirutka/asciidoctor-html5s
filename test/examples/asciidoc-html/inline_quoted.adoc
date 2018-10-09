@@ -3,3 +3,35 @@
 
 // .role-del
 [del]#striked text#
+
+// .double-lang-cs
+:lang: cs
+"`chunky bacon`"
+
+// .double-lang-fi
+:lang: fi
+"`chunky bacon`"
+
+// .double-lang-nl
+:lang: nl
+"`chunky bacon`"
+
+// .double-lang-pl
+:lang: pl
+"`chunky bacon`"
+
+// .single-lang-cs
+:lang: cs
+'`chunky bacon`'
+
+// .single-lang-fi
+:lang: fi
+'`chunky bacon`'
+
+// .single-lang-nl
+:lang: nl
+'`chunky bacon`'
+
+// .single-lang-pl
+:lang: pl
+'`chunky bacon`'

@@ -15,8 +15,21 @@ module Slim::Helpers
 
   # Defaults
   DEFAULT_HIGHLIGHTJS_THEME = 'github'
+  DEFAULT_LANG = 'en'
   DEFAULT_SECTNUMLEVELS = 3
   DEFAULT_TOCLEVELS = 2
+
+  CURLY_QUOTES = [
+    [%w[af en eo ga hi ia id ko mt th tr zh], ['&#x2018;', '&#x2019;', '&#x201c;', '&#x201d;']],  # ‘…’ “…”
+    [%w[bs fi sv], ['&#x2019;', '&#x2019;', '&#x201d;', '&#x201d;']],  # ’…’ ”…”
+    [%w[cs da de is lt sl sk sr], ['&#x201a;', '&#x2018;', '&#x201e;', '&#x201c;']],  # ‚…‘ „…“
+    [%w[nl], ['&#x201a;', '&#x2019;', '&#x201e;', '&#x201d;']],  # ‚…’ „…”
+    [%w[hu pl ro], ['&#x00ab;', '&#x00bb;', '&#x201e;', '&#x201d;']],  # «…» „…”
+  ].reduce({}) do |hsh, (langs, codes)|
+    langs.each { |lang| hsh[lang] = codes }
+    hsh
+  end
+  CURLY_QUOTES.default = CURLY_QUOTES[DEFAULT_LANG]
 
   KATEX_RENDER_CODE = <<-JS.gsub(/\s+/, ' ')
     document.addEventListener("DOMContentLoaded", function() {
@@ -668,5 +681,23 @@ is book and it's a child of a book part. Excluding block content."
       ("fa-rotate-#{attr :rotate}" if attr? :rotate),
       ("fa-flip-#{attr :flip}" if attr? :flip)
     ].compact
+  end
+
+  #--------------------------------------------------------
+  # inline_quoted
+  #
+
+  # @param text [String] the text to wrap in double quotes.
+  # @return [String] quoted *text*.
+  def double_quoted(text)
+    quotes = CURLY_QUOTES[attr(:lang, DEFAULT_LANG, true)]
+    "#{quotes[2]}#{text}#{quotes[3]}"
+  end
+
+  # @param text [String] the text to wrap in single quotes.
+  # @return [String] quoted *text*.
+  def single_quoted(text)
+    quotes = CURLY_QUOTES[attr(:lang, DEFAULT_LANG, true)]
+    "#{quotes[0]}#{text}#{quotes[1]}"
   end
 end
