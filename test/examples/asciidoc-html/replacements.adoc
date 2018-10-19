@@ -1,0 +1,11 @@
+// .en-dash-with-spaces
+Lorem ipsum -- dolor
+
+// .en-dash-without-spaces
+1955--2011
+
+// .em-dash-with-spaces
+Lorem ipsum --- dolor
+
+// .em-dash-without-spaces
+Lorem ipsum---dolor

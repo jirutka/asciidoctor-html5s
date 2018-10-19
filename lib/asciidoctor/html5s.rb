@@ -1,5 +1,6 @@
 require 'asciidoctor/html5s/version'
 require 'asciidoctor/html5s/converter'
+require 'asciidoctor/html5s/replacements'
 require 'asciidoctor/html5s/attached_colist_treeprocessor'
 
 unless RUBY_PLATFORM == 'opal'
