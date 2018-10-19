@@ -28,6 +28,62 @@ This project provides alternative HTML5 converter (backend) for http://asciidoct
 * Compatibility with existing Asciidoctor CSS styles.
 
 
+== Text Substitutions
+
+=== Quotes
+
+Asciidoctor provides syntax for so-called https://asciidoctor.org/docs/user-manual/#curved[“curved quotation marks”] (which are actually just the _correct_ quotation marks), but the built-in converters outputs only one (hard-coded) type of the single/double quotation marks -- that one used in English and few other languages.
+This converter outputs the correct type of the quotation marks based on the specified language (using standard `lang` attribute).
+
+
+[cols="2,^1l,3,^1l,^1"]
+|===
+| Name | Syntax | Languages (:lang:) | HTML | Rendered
+
+.4+| double quotes
+.4+| "`word`"
+| af, en, eo, ga, hi, ia, id, ko, mt, th, tr, zh
+| &#x201c;word&#x201d;
+| “word”
+
+| bs, fi, sv
+| &#x201d;word&#x201d;
+| ”word”
+
+| cs, da, de, is, lt, sl, sk, sr
+| &#x201e;word&#x201c;
+| „word“
+
+| hu, pl, nl, ro
+| &#x201e;word&#x201d;
+| „word”
+
+.5+| single quotes
+.5+| '`word`'
+| af, en, eo, ga, hi, ia, id, ko, mt, th, tr, zh
+| &#x2018;word&#x2019;
+| ‘word’
+
+| bs, fi, sv
+| &#x2019;word&#x2019;
+| ’word’
+
+| cs, da, de, is, lt, sl, sk, sr
+| &#x201a;word&#x2018;
+| ‚word‘
+
+| nl
+| &#x201a;word&#x2019;
+| ‚word’
+
+| hu, pl, ro
+| &#x00ab;word&#x00bb;
+| «word»
+|===
+
+The default (fallback) type is the first one.
+
+
 == Requirements
 
 * https://www.ruby-lang.org/[Ruby] 2.0+, http://jruby.org/[JRuby] 9.1+ or https://nodejs.org/[Node.js]
