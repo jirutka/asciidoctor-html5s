@@ -84,6 +84,32 @@ This converter outputs the correct type of the quotation marks based on the spec
 The default (fallback) type is the first one.
 
 
+=== Replacements
+
+Asciidoctor replaces `--` with em dash (—) and does not provide any replacement for en dash (–).
+That’s not very convenient, because en dash is more common than em dash; at least in (British) English and Czech (actually we don’t use em dash at all).
+So this extension also modifies the https://asciidoctor.org/docs/user-manual/#replacements[replacements table]: changes `--` to en dash and adds `---` for em dash.
+
+[cols="2,^1l,^1l,^1,2"]
+|===
+| Name | Syntax | Unicode | Rendered | Notes
+
+| En dash
+| --
+| &#8211;
+| &#8211;
+.2+| Only replaced if between two word characters, between a word character and a line boundary, or flanked by spaces.
+
+When flanked by space characters (e.g. `+a -- b+` or `+a --- b+`), the normal spaces are replaced by thin spaces (\&#8201;).
+
+| Em dash
+| ---
+| &#8212;
+| &#8212;
+
+|===
+
+
 == Requirements
 
 * https://www.ruby-lang.org/[Ruby] 2.0+, http://jruby.org/[JRuby] 9.1+ or https://nodejs.org/[Node.js]
