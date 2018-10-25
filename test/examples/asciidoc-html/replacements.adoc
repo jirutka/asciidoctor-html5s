@@ -1,11 +1,35 @@
-// .en-dash-with-spaces
-Lorem ipsum -- dolor
+// .en-dash
+chunky -- bacon
 
-// .en-dash-without-spaces
+// .en-dash-escaped
+chunky \-- bacon
+
+// .en-dash-at-bol
+-- bacon
+
+// .en-dash-at-eol
+chunky --
+
+// .en-dash-no-spaces
 1955--2011
 
-// .em-dash-with-spaces
-Lorem ipsum --- dolor
+// .en-dash-no-spaces-escaped
+1955\--2011
 
-// .em-dash-without-spaces
-Lorem ipsum---dolor
+// .em-dash
+chunky --- bacon
+
+// .em-dash-escaped
+chunky \--- bacon
+
+// .em-dash-at-bol
+--- bacon
+
+// .em-dash-at-eol
+chunky ---
+
+// .em-dash-no-spaces
+1955---2011
+
+// .em-dash-no-spaces-escaped
+1955\---2011
