@@ -19,9 +19,6 @@ chunky --
 // .em-dash
 chunky --- bacon
 
-// .em-dash-escaped
-chunky \--- bacon
-
 // .em-dash-at-bol
 --- bacon
 
@@ -30,6 +27,3 @@ chunky ---
 
 // .em-dash-no-spaces
 1955---2011
-
-// .em-dash-no-spaces-escaped
-1955\---2011
