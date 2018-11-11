@@ -4,7 +4,7 @@ language: ruby
 
 jobs:
   include:
-    - env: &adoc-latest ASCIIDOCTOR_VERSION=1.5.7.1
+    - env: &adoc-latest ASCIIDOCTOR_VERSION=1.5.8
       rvm: &ruby-latest 2.5
     - env: *adoc-latest
       rvm: 2.4
@@ -20,6 +20,9 @@ jobs:
       rvm: ruby-head
     - env: *adoc-latest
       rvm: jruby-head
+
+    - env: ASCIIDOCTOR_VERSION=1.5.7.1
+      rvm: *ruby-latest
 
     - env: ASCIIDOCTOR_VERSION=1.5.7
       rvm: *ruby-latest
