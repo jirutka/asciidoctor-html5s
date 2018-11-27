@@ -11,5 +11,5 @@ end
 
 group :development do
   # Keep in sync with version used for asciidoctor.js.
-  gem 'opal', '~> 0.11.0'
+  gem 'opal', git: 'https://github.com/opal/opal.git', ref: '6703d8d'
 end
