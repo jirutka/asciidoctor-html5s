@@ -109,6 +109,7 @@ def build_converter(mode = :pretty)
       engine_opts: {
         generator: generator,
       },
+      ignore_convert_opts: (mode == :opal),
       pretty: (mode == :pretty),
       output: file
     )
