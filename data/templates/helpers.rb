@@ -526,6 +526,7 @@ is book and it's a child of a book part. Excluding block content."
       "//www.youtube.com/embed/#{video_id}#{url_query params}"
     else
       anchor = [attr(:start), attr(:end)].join(',').chomp(',')
+      anchor = '' if anchor == ','  # XXX: https://github.com/opal/opal/issues/1902
       anchor = '#t=' + anchor unless anchor.empty?
       media_uri "#{attr :target}#{anchor}"
     end
