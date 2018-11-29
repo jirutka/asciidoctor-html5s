@@ -14,10 +14,10 @@
 - when :mark
   mark class=role =text
 - when :double
-  = html_tag_if role?, :span, :class=>role
+  = html_tag_if(role?, :span, :class=>role)
     =(double_quoted text)
 - when :single
-  = html_tag_if role?, :span, :class=>role
+  = html_tag_if(role?, :span, :class=>role)
     =(single_quoted text)
 - when :asciimath, :latexmath
   span.math data-lang=stem_lang =(delimit_stem text, type)
@@ -25,5 +25,5 @@
   - if role == 'line-through' || role == 'del'
     del =text
   - else
-    = html_tag_if role?, :span, :class=>role
+    = html_tag_if(role?, :span, :class=>role)
       =text
