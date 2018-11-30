@@ -110,6 +110,16 @@ When flanked by space characters (e.g. `+a -- b+` or `+a --- b+`), the normal sp
 |===
 
 
+== Other Enhancements
+
+=== Image Block
+
+The `link` attribute recognizes few special values:
+
+link=self::
+  Make the image a link with URL of the image itself – to open it in full size.
+
+
 == Requirements
 
 * https://www.ruby-lang.org/[Ruby] 2.0+, http://jruby.org/[JRuby] 9.1+ or https://nodejs.org/[Node.js]
@@ -175,6 +185,10 @@ Extra attributes accepted by the {gem-name}:
 html5s-force-stem-type::
   Ignore declared (e.g. `:stem: asciimath`, `asciimath:[]`, ...) and default type of the stem macro/block and always use the one specified by this attribute. +
   Asciidoctor hard-codes the default stem type to “asciimath”, which is not supported by KaTeX.
+
+html5s-image-self-link-label::
+  The link title and ARIA label for the block image link that points to the image file (i.e. `href` equals the image’s `src`).
+  Default is `Open the image in full size`.
 
 
 == License

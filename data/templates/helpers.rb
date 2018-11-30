@@ -423,6 +423,30 @@ module Slim::Helpers
   end
 
   #--------------------------------------------------------
+  # block_image
+  #
+
+  ##
+  # @return [String, nil] an URL for the image's link.
+  def image_link
+    @_html5s_image_link ||=
+      case (link = attr(:link))
+      when 'self'
+        image_uri(attr(:target))
+      else
+        link
+      end
+  end
+
+  ##
+  # @return [String, nil] a label/title of the image link.
+  def image_link_label
+    if image_uri(attr(:target)) == image_link
+      document.attr('html5s-image-self-link-label', 'Open the image in full size')
+    end
+  end
+
+  #--------------------------------------------------------
   # block_listing
   #
 
