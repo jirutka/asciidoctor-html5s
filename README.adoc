@@ -119,6 +119,9 @@ The `link` attribute recognizes few special values:
 link=self::
   Make the image a link with URL of the image itself – to open it in full size.
 
+link=none / link=false::
+  Suppress the effect of `:html5s-image-default-link: self`, i.e. remove the default image link.
+
 
 == Requirements
 
@@ -185,6 +188,9 @@ Extra attributes accepted by the {gem-name}:
 html5s-force-stem-type::
   Ignore declared (e.g. `:stem: asciimath`, `asciimath:[]`, ...) and default type of the stem macro/block and always use the one specified by this attribute. +
   Asciidoctor hard-codes the default stem type to “asciimath”, which is not supported by KaTeX.
+
+html5s-image-default-link: self::
+  Make every block image a link with the image’s source URL (i.e. user can click on the image to open it in full size), unless the link attribute is defined and is not `none` or `false`.
 
 html5s-image-self-link-label::
   The link title and ARIA label for the block image link that points to the image file (i.e. `href` equals the image’s `src`).

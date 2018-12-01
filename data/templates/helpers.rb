@@ -431,8 +431,12 @@ module Slim::Helpers
   def image_link
     @_html5s_image_link ||=
       case (link = attr(:link))
+      when 'none', 'false'
+        return
       when 'self'
         image_uri(attr(:target))
+      when nil, ''
+        image_uri(attr(:target)) if document.attr?('html5s-image-default-link', 'self')
       else
         link
       end

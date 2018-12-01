@@ -6,3 +6,18 @@ image::sunset.jpg[link="http://www.flickr.com/photos/javh/5448336655", opts=noop
 
 // .with-link-self
 image::sunset.jpg[link=self]
+
+// .with-link-none
+image::sunset.jpg[link=none]
+
+// .html5s-image-default-link-self
+:html5s-image-default-link: self
+image::sunset.jpg[]
+
+// .html5s-image-default-link-self-with-link-none
+:html5s-image-default-link: self
+image::sunset.jpg[link=none]
+
+// .html5s-image-default-link-self-with-link-url
+:html5s-image-default-link: self
+image::sunset.jpg[link="http://www.flickr.com/photos/javh/5448336655"]
