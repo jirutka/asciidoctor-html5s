@@ -26,7 +26,7 @@ EOF
 
   s.add_development_dependency 'asciidoctor-doctest', '= 2.0.0.beta.5'
   s.add_development_dependency 'asciidoctor-templates-compiler', '~> 0.5.0'
-  s.add_development_dependency 'bundler', '~> 1.6'
+  s.add_development_dependency 'bundler', '>= 1.6'
   s.add_development_dependency 'coderay', '~> 1.1'
   s.add_development_dependency 'rake', '~> 10.0'
   s.add_development_dependency 'slim', '~> 3.0'
