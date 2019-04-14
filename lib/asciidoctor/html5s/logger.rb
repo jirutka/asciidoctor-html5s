@@ -13,17 +13,8 @@ module Asciidoctor::Html5s
     def default_logger
       if defined? ::Asciidoctor::LoggerManager
         ::Asciidoctor::LoggerManager.logger
-      elsif defined? ::Logger
-        ::Logger.new(STDERR)
       else
-        # Fake logger for Opal.
-        # TODO: Remove after update to Asciidoctor 1.5.7 or Opal with Logger.
-        Object.new.tap do |o|
-          # rubocop: disable MethodMissing
-          def o.method_missing(_, *args)
-            STDERR.puts(*args)
-          end
-        end
+        ::Logger.new(STDERR)
       end
     end
   end
