@@ -24,7 +24,7 @@ EOF
   s.add_runtime_dependency 'asciidoctor', '~> 1.5.5'
   s.add_runtime_dependency 'thread_safe', '~> 0.3.4'
 
-  s.add_development_dependency 'asciidoctor-doctest', '= 2.0.0.beta.5'
+  s.add_development_dependency 'asciidoctor-doctest', '= 2.0.0.beta.6'
   s.add_development_dependency 'asciidoctor-templates-compiler', '~> 0.5.0'
   s.add_development_dependency 'bundler', '>= 1.6'
   s.add_development_dependency 'coderay', '~> 1.1'
