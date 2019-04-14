@@ -21,7 +21,7 @@ EOF
 
   s.required_ruby_version = '>= 2.0'
 
-  s.add_runtime_dependency 'asciidoctor', '~> 1.5.5'
+  s.add_runtime_dependency 'asciidoctor', '>= 1.5.5', '< 3.0'
   s.add_runtime_dependency 'thread_safe', '~> 0.3.4'
 
   s.add_development_dependency 'asciidoctor-doctest', '= 2.0.0.beta.6'
