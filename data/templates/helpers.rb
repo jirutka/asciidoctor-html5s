@@ -692,8 +692,11 @@ is book and it's a child of a book part. Excluding block content."
   # @return [String, nil] text of the bibref anchor, or +nil+ if not found.
   def bibref_text
     if document.respond_to? :catalog  # Asciidoctor >=1.5.6
-      # NOTE: Technically it should be `reftext`, but subs have already been applied to text.
-      text
+      if ::Asciidoctor::VERSION[0] == '1'
+        text
+      else  # Asciidoctor >= 2.0.0
+        "[#{reftext || id}]"
+      end
     else
       "[#{target}]"
     end
