@@ -52,6 +52,7 @@ script:
   - bundle exec rake build:js
 
 before_deploy:
+  - gem install bundler
   - bundle exec rake build
   - bundle exec rake build:js
 
