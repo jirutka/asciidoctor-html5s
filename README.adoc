@@ -126,7 +126,7 @@ link=none / link=false::
 == Requirements
 
 * https://www.ruby-lang.org/[Ruby] 2.0+, http://jruby.org/[JRuby] 9.1+ or https://nodejs.org/[Node.js]
-* https://rubygems.org/gems/asciidoctor/[Asciidoctor] 1.5.5+ or https://www.npmjs.com/package/@asciidoctor/core[@asciidoctor/core] ~2.0.0
+* https://rubygems.org/gems/asciidoctor/[Asciidoctor] 1.5.5+ or https://www.npmjs.com/package/@asciidoctor/core[@asciidoctor/core] >=2.0.0 <2.2.0
 * https://rubygems.org/gems/thread_safe/[thread_safe] (not required, but recommended for Ruby MRI)
 
 Note: This converter consists of https://github.com/slim-template/slim/[Slim] templates, but they are precompiled into pure Ruby code using https://github.com/jirutka/asciidoctor-templates-compiler/[asciidoctor-templates-compiler], so you don’t need Slim to use it!
