@@ -17,7 +17,7 @@ This converter focuses on correct semantics, accessibility and compatibility
 with common typographic CSS styles.
 EOF
 
-  s.files         = Dir['data/**/*', 'lib/**/*', '*.gemspec', 'LICENSE*', 'README*']
+  s.files         = Dir['data/**/*', 'lib/**/*', '*.gemspec', 'LICENSE*', 'README.adoc']
 
   s.required_ruby_version = '>= 2.0'
 
@@ -28,6 +28,7 @@ EOF
   s.add_development_dependency 'asciidoctor-templates-compiler', '~> 0.5.0'
   s.add_development_dependency 'bundler', '>= 1.6'
   s.add_development_dependency 'coderay', '~> 1.1'
+  s.add_development_dependency 'pandoc-ruby', '~> 2.0'
   s.add_development_dependency 'rake', '~> 10.0'
   s.add_development_dependency 'slim', '~> 3.0'
   s.add_development_dependency 'slim-htag', '~> 0.1.0'

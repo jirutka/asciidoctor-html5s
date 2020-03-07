@@ -44,6 +44,19 @@ end
 
 task :build => 'build:converter'
 
+task :readme2md do
+  require 'asciidoctor'
+  require 'pandoc-ruby'
+
+  docbook = Asciidoctor
+    .load_file('README.adoc', header_footer: true, backend: 'docbook', attributes: 'npm-readme')
+    .convert
+  markdown = PandocRuby
+    .convert(docbook, from: :docbook, to: :markdown_github, 'base-header-level': 2)
+
+  File.write('README.md', markdown)
+end
+
 task :clean do
   rm_rf CONVERTER_FILE
   rm_rf Dir['*.gem']
@@ -51,6 +64,7 @@ task :clean do
   rm_rf Dir['dist/*.js']
   rm_rf Dir['dist/*.js.map']
   rm_rf Dir['pkg/*.gem']
+  rm_rf 'README.md'
 end
 
 begin

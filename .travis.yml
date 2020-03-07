@@ -41,9 +41,15 @@ jobs:
     - env: ASCIIDOCTOR_VERSION="git:master"
       rvm: *ruby-latest
 
+addons:
+  apt:
+    packages:
+      - pandoc
+
 script:
   - bundle exec rake test
   - bundle exec rake build:js
+  - bundle exec rake readme2md
 
 before_deploy:
   - gem install bundler
