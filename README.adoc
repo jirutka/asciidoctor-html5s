@@ -134,6 +134,7 @@ Note: This converter consists of https://github.com/slim-template/slim/[Slim] te
 
 == Installation
 
+ifndef::npm-readme[]
 === Ruby
 
 Install {gem-name} from Rubygems:
@@ -148,6 +149,7 @@ gem install --pre {gem-name}
 
 
 === Node.js
+endif::npm-readme[]
 
 Install {gem-name} from npmjs.com:
 
@@ -157,6 +159,7 @@ npm install --save {gem-name}
 
 == Usage
 
+ifndef::npm-readme[]
 === CLI
 
 [source, sh, subs="+attributes"]
@@ -164,6 +167,7 @@ asciidoctor -r {gem-name} -b html5s FILE...
 
 
 === Node.js
+endif::npm-readme[]
 
 [source, js, subs="+attributes"]
 ----
