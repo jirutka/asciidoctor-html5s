@@ -5,7 +5,11 @@ language: ruby
 jobs:
   include:
     - env: &adoc-latest ASCIIDOCTOR_VERSION=2.0.7
-      rvm: &ruby-latest 2.5
+      rvm: &ruby-latest 2.7
+    - env: *adoc-latest
+      rvm: 2.6
+    - env: *adoc-latest
+      rvm: 2.5
     - env: *adoc-latest
       rvm: 2.4
     - env: *adoc-latest
