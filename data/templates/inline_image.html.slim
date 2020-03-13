@@ -6,5 +6,5 @@
       | [#{attr :alt}]
   - else
     img (src=(type == 'icon' ? (icon_uri target) : (image_uri target))
-         alt=(attr :alt) width=(attr :width) height=(attr :height) title=(attr :title)
+         alt=(attr :alt) width=(attr :width) height=(attr :height) title=(attr :title) loading=(attr :loading)
          class=[(type if type != 'image'), role] style=style_value(float: (attr :float)))

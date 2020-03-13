@@ -122,6 +122,8 @@ link=self::
 link=none / link=false::
   Suppress the effect of `:html5s-image-default-link: self`, i.e. remove the default image link.
 
+Both block image and inline image supports additional attribute `loading` (see https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading#Images[Lazy loading] on MDN for more information).
+
 
 == Requirements
 

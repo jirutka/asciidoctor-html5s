@@ -10,6 +10,9 @@ image::sunset.jpg[link=self]
 // .with-link-none
 image::sunset.jpg[link=none]
 
+// .with-loading-lazy
+image::sunset.jpg[loading=lazy]
+
 // .html5s-image-default-link-self
 :html5s-image-default-link: self
 image::sunset.jpg[]
