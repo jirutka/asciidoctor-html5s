@@ -22,3 +22,15 @@ Where is this?
 == Heading
 
 This is actually here.
+
+// .issue-14-duplicated-footnotes-in-table
+|===
+
+|cell footnote:intable[first]
+
+|cell footnote:intable[]
+|===
+
+paragraph footnote:notintable[second]
+
+another paragraph footnote:notintable[]

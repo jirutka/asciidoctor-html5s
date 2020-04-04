@@ -32,8 +32,8 @@
                     - when :literal
                       .literal: pre =cell.text
                     - else
-                      - if cell.content.one?
-                        =cell.content.first
+                      - if (content = cell.content).one?
+                        =content.first
                       - else
-                        - cell.content.each do |text|
+                        - content.each do |text|
                           p =text
