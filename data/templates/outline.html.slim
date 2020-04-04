@@ -5,6 +5,6 @@
   ol.toc-list class="level-#{slevel}"
     - sections.each do |sec|
       li
-        a href="##{sec.id}" =section_title sec
+        a href="##{sec.id}" =(section_title sec, drop_anchors: true)
         - if (sec.level < toclevels) && (child_toc = converter.convert sec, 'outline')
           = child_toc

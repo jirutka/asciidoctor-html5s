@@ -375,15 +375,19 @@ module Slim::Helpers
   # Returns the captioned section's title, optionally numbered.
   #
   # @param sec [Asciidoctor::Section] the section node (default: self).
+  # @param drop_anchors [Boolean] Remove +<a>+ tags from the title?
   # @return [String]
   #
-  def section_title(sec = self)
+  def section_title(sec = self, drop_anchors: false)
     sectnumlevels = document.attr(:sectnumlevels, DEFAULT_SECTNUMLEVELS).to_i
 
+    title = sec.captioned_title
+    title = title.gsub(/<(?:a[^>+]+|\/a)>/, '') if drop_anchors && title.include?('<a')
+
     if sec.numbered && !sec.caption && sec.level <= sectnumlevels
-      [sec.sectnum, sec.captioned_title].join(' ')
+      [sec.sectnum, title].join(' ')
     else
-      sec.captioned_title
+      title
     end
   end
 
