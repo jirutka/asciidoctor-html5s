@@ -399,7 +399,12 @@ module Slim::Helpers
   end
 
   def link_rel
-    'noopener' if option?('noopener') || local_attr(:window) == '_blank'
+    rel = [
+      ('nofollow' if option?('nofollow')),
+      ('noopener' if option?('noopener') || local_attr(:window) == '_blank')
+    ].compact
+
+    rel.empty? ? nil : rel.join(' ')
   end
 
   #--------------------------------------------------------

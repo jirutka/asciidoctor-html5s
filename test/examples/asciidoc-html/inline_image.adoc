@@ -4,6 +4,9 @@ image:linux.svg[link="http://inkscape.org/doc/examples/tux.svg", window=_blank]
 // .image-with-link-and-noopener
 image:linux.svg[link="http://inkscape.org/doc/examples/tux.svg", opts=noopener]
 
+// .with-link-and-nofollow
+image:linux.svg[link="http://inkscape.org/doc/examples/tux.svg", opts=nofollow]
+
 // .image-with-loading-lazy
 image:sunset.jpg[loading=lazy]
 

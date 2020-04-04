@@ -4,6 +4,9 @@ image::sunset.jpg[link="http://www.flickr.com/photos/javh/5448336655", window=_b
 // .with-link-and-noopener
 image::sunset.jpg[link="http://www.flickr.com/photos/javh/5448336655", opts=noopener]
 
+// .with-link-and-nofollow
+image::sunset.jpg[link="http://www.flickr.com/photos/javh/5448336655", opts=nofollow]
+
 // .with-link-self
 image::sunset.jpg[link=self]
 
