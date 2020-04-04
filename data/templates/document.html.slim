@@ -17,7 +17,9 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
       =docinfo_content
   body [
       id=id
-      class=[(attr :doctype), ("#{attr 'toc-class'} toc-#{attr 'toc-position', 'left'}" if (attr? 'toc-class') && (attr? :toc) && (attr? 'toc-placement', 'auto'))]
+      class=[(attr :doctype),
+             ("#{attr 'toc-class'} toc-#{attr 'toc-position', 'left'}" if (attr? 'toc-class') && (attr? :toc) && (attr? 'toc-placement', 'auto')),
+             (attr :docrole) || (attr :role)]
       style=style_value(max_width: (attr 'max-width')) ]
     - unless noheader
       header
