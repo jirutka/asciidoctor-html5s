@@ -1,29 +1,27 @@
-- unless id.nil?
-  a id=id aria-hidden='true'
 - case type
 - when :emphasis
-  em class=role =text
+  em id=id class=role =text
 - when :strong
-  strong class=role =text
+  strong id=id class=role =text
 - when :monospaced
-  code class=role =text
+  code id=id class=role =text
 - when :superscript
-  sup class=role =text
+  sup id=id class=role =text
 - when :subscript
-  sub class=role =text
+  sub id=id class=role =text
 - when :mark
-  mark class=role =text
+  mark id=id class=role =text
 - when :double
-  = html_tag_if role?, :span, :class=>role
+  = html_tag_if role? || id, :span, :id=>id, :class=>role
     =(double_quoted text)
 - when :single
-  = html_tag_if role?, :span, :class=>role
+  = html_tag_if role? || id, :span, :id=>id, :class=>role
     =(single_quoted text)
 - when :asciimath, :latexmath
-  span.math data-lang=stem_lang =(delimit_stem text, type)
+  span.math id=id data-lang=stem_lang =(delimit_stem text, type)
 - else
   - if role == 'line-through' || role == 'del'
-    del =text
+    del id=id =text
   - else
-    = html_tag_if role?, :span, :class=>role
+    = html_tag_if role? || id, :span, :id=>id, :class=>role
       =text
