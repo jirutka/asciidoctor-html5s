@@ -1,5 +1,4 @@
 require 'asciidoctor/html5s'
-require 'asciidoctor/html5s/logger'
 require 'date' unless RUBY_PLATFORM == 'opal'
 
 # Add custom functions to this module that you want to use in your Slim
@@ -53,7 +52,7 @@ module Slim::Helpers
 
   # @return [Logger]
   def log
-    @_html5s_logger ||= ::Asciidoctor::Html5s::Logging.default_logger
+    ::Asciidoctor::LoggerManager.logger
   end
 
   ##
@@ -678,27 +677,21 @@ is book and it's a child of a book part. Excluding block content."
         text
       elsif (path = local_attr :path)
         path
-      elsif document.respond_to? :catalog  # Asciidoctor >=1.5.6
+      else
         ref = document.catalog[:refs][attr :refid]
         if ref.kind_of? Asciidoctor::AbstractNode
           ref.xreftext((@_html5s_xrefstyle ||= document.attributes['xrefstyle']))
         end
-      else  # Asciidoctor < 1.5.6
-        document.references[:ids][attr :refid || target]
       end
     (str || "[#{attr :refid}]").tr_s("\n", ' ')
   end
 
   # @return [String, nil] text of the bibref anchor, or +nil+ if not found.
   def bibref_text
-    if document.respond_to? :catalog  # Asciidoctor >=1.5.6
-      if ::Asciidoctor::VERSION[0] == '1'
-        text
-      else  # Asciidoctor >= 2.0.0
-        "[#{reftext || id}]"
-      end
-    else
-      "[#{target}]"
+    if ::Asciidoctor::VERSION[0] == '1'
+      text
+    else  # Asciidoctor >= 2.0.0
+      "[#{reftext || id}]"
     end
   end
 
