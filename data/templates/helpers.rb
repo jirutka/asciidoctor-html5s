@@ -602,10 +602,9 @@ is book and it's a child of a book part. Excluding block content."
     stylesheet = attr :stylesheet
     stylesdir = attr :stylesdir, ''
     default_style = ::Asciidoctor::DEFAULT_STYLESHEET_KEYS.include? stylesheet
-    linkcss = attr?(:linkcss) || safe >= ::Asciidoctor::SafeMode::SECURE
     ss = ::Asciidoctor::Stylesheets.instance
 
-    if linkcss
+    if attr?(:linkcss)
       path = default_style ? ::Asciidoctor::DEFAULT_STYLESHEET_NAME : stylesheet
       styles << { href: [stylesdir, path] }
     elsif default_style
@@ -631,7 +630,7 @@ is book and it's a child of a book part. Excluding block content."
     case attr 'source-highlighter'
     when 'coderay'
       if attr('coderay-css', 'class') == 'class'
-        if linkcss
+        if attr?(:linkcss)
           styles << { href: [stylesdir, ss.coderay_stylesheet_name] }
         else
           styles << { text: ss.coderay_stylesheet_data }
