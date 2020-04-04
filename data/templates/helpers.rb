@@ -501,7 +501,7 @@ without a title when doctype is book. Excluding block content.'
   def partintro_allowed?
     if result = (level != 0 || parent.context != :section || document.doctype != 'book')
       log.warn "asciidoctor: ERROR: partintro block can only be used when doctype
-is book and it's a child of a book part. Excluding block content."
+is book and must be a child of a book part. Excluding block content."
     end
     !result
   end
