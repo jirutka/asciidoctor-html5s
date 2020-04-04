@@ -133,7 +133,7 @@ ifndef::npm-readme[]
 === Ruby
 
 * https://www.ruby-lang.org/[Ruby] 2.0+ or http://jruby.org/[JRuby] 9.1+
-* https://rubygems.org/gems/asciidoctor/[Asciidoctor] 1.5.5+
+* https://rubygems.org/gems/asciidoctor/[Asciidoctor] 1.5.7+
 * https://rubygems.org/gems/thread_safe/[thread_safe] (not required, but recommended for Ruby MRI)
 
 
