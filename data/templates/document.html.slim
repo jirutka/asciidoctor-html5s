@@ -25,6 +25,8 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
              ("#{attr 'toc-class'} toc-#{attr 'toc-position', 'left'}" if (attr? 'toc-class') && (attr? :toc) && (attr? 'toc-placement', 'auto')),
              (attr :docrole) || (attr :role)]
       style=style_value(max_width: (attr 'max-width')) ]
+    - unless (docinfo_content = (docinfo :header)).empty?
+      =docinfo_content
     - unless noheader
       header
         include _header.html
