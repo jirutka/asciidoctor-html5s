@@ -463,17 +463,6 @@ module Slim::Helpers
   #
 
   ##
-  # @return [String] a canonical name of the source-highlighter to be used as
-  #         a style class.
-  def highlighter
-    @_html5s_highlighter ||=
-      case (highlighter = document.attr('source-highlighter'))
-      when 'highlight.js'; 'highlightjs'
-      else highlighter
-      end
-  end
-
-  ##
   # Returns the callout list attached to this listing node, or +nil+ if none.
   #
   # Note: This variable is set by extension

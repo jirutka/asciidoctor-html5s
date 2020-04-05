@@ -1,9 +1,9 @@
 = block_with_caption :top, :class=>'listing-block'
   - if style == 'source'
-    - if highlighter == 'html-pipeline'
+    - if document.attr? 'source-highlighter', 'html-pipeline'
       pre: code data-lang=source_lang =content
     - else
-      pre class=[highlighter, 'highlight', ('linenums' if attr? :linenums), nowrap?]
+      pre class=[document.attr('source-highlighter'), 'highlight', ('linenums' if attr? :linenums), nowrap?]
         code class=("language-#{source_lang}" if source_lang) data-lang=source_lang =content
   - else
     pre class=nowrap? =content

@@ -1,5 +1,5 @@
 // .source-highlighter-highlightjs
-:source-highlighter: highlight.js
+:source-highlighter: highlightjs
 
 [source, ruby]
 ----
