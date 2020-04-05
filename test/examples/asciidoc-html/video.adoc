@@ -5,7 +5,7 @@ video::rPQoq7ThGAU[youtube]
 video::rPQoq7ThGAU[youtube, width=640, height=480, options="nofullscreen"]
 
 // .youtube-url-params
-video::rPQoq7ThGAU[youtube, start=60, end=140, options="autoplay, loop, nocontrol"]
+video::rPQoq7ThGAU[youtube, start=60, end=140, options="autoplay, loop, muted, nocontrol"]
 
 // .vimeo
 video::32255377[vimeo]
@@ -14,4 +14,4 @@ video::32255377[vimeo]
 video::32255377[vimeo, width=640, height=480, options="nofullscreen"]
 
 // .vimeo-url-params
-video::32255377[vimeo, start=60, options="autoplay, loop"]
+video::32255377[vimeo, start=60, options="autoplay, loop, muted"]

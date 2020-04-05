@@ -13,6 +13,7 @@
         height=(attr :height)
         poster=(media_uri(attr :poster) if attr? :poster)
         autoplay=(option? 'autoplay')
+        muted=(option? 'muted')
         controls=!(option? 'nocontrols')
         loop=(option? 'loop') ]
       | Your browser does not support the video tag.

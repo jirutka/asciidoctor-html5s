@@ -543,7 +543,8 @@ is book and must be a child of a book part. Excluding block content."
     when :vimeo
       params = {
         autoplay: (1 if option? 'autoplay'),
-        loop:     (1 if option? 'loop')
+        loop:     (1 if option? 'loop'),
+        muted:    (1 if option? 'muted')
       }
       start_anchor = "#at=#{attr :start}" if attr? :start
       "//player.vimeo.com/video/#{attr :target}#{start_anchor}#{url_query params}"
@@ -557,6 +558,7 @@ is book and must be a child of a book part. Excluding block content."
         list:     (attr :list, list_id),
         autoplay: (1 if option? 'autoplay'),
         loop:     (1 if option? 'loop'),
+        muted:    (1 if option? 'muted'),
         controls: (0 if option? 'nocontrols')
       }
       "//www.youtube.com/embed/#{video_id}#{url_query params}"
