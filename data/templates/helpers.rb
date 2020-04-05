@@ -519,8 +519,8 @@ is book and must be a child of a book part. Excluding block content."
   # block_table
   #
 
-  def autowidth?
-    option? :autowidth
+  def autowidth?(node = self)
+    node.option? :autowidth
   end
 
   def stretch?

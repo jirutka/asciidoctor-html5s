@@ -10,7 +10,7 @@
             col
         - else
           - columns.each do |col|
-            col style="width: #{col.attr :colpcwidth}%;"
+            col style=style_value(width: ("#{col.attr :colpcwidth}%" if !autowidth? col))
       - [:head, :foot, :body].reject { |tblsec| rows[tblsec].empty? }.each do |tblsec|
         <t#{tblsec}>
           - rows[tblsec].each do |row|
