@@ -3,10 +3,8 @@
     - if highlighter == 'html-pipeline'
       pre: code data-lang=source_lang =content
     - else
-      - unless highlighter == 'CodeRay'
-        - code_class = "language-#{source_lang}" if source_lang
       pre class=[highlighter, 'highlight', ('linenums' if attr? :linenums), nowrap?]
-        code class=code_class data-lang=source_lang =content
+        code class=("language-#{source_lang}" if source_lang) data-lang=source_lang =content
   - else
     pre class=nowrap? =content
   / Note: This is a hack to embed callout list into the listing element.

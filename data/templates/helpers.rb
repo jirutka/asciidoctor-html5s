@@ -468,7 +468,6 @@ module Slim::Helpers
   def highlighter
     @_html5s_highlighter ||=
       case (highlighter = document.attr('source-highlighter'))
-      when 'coderay'; 'CodeRay'
       when 'highlight.js'; 'highlightjs'
       else highlighter
       end
@@ -638,17 +637,7 @@ is book and must be a child of a book part. Excluding block content."
       scripts << { text: KATEX_RENDER_CODE }
     end
 
-    case attr 'source-highlighter'
-    when 'coderay'
-      if attr('coderay-css', 'class') == 'class'
-        if attr?(:linkcss)
-          styles << { href: [stylesdir, ss.coderay_stylesheet_name] }
-        else
-          styles << { text: ss.coderay_stylesheet_data }
-        end
-      end
-
-    when 'highlightjs'
+    if attr? 'source-highlighter', 'highlightjs'
       hjs_base = attr :highlightjsdir, HIGHLIGHTJS_BASE_URI
       hjs_theme = attr 'highlightjs-theme', DEFAULT_HIGHLIGHTJS_THEME
 

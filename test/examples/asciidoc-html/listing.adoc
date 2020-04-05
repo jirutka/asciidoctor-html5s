@@ -1,13 +1,3 @@
-// .source-highlighter-coderay
-:source-highlighter: coderay
-
-[source, ruby]
-----
-5.times do
-  print "Odelay!"
-end
-----
-
 // .source-highlighter-highlightjs
 :source-highlighter: highlight.js
 
