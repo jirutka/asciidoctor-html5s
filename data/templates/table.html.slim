@@ -27,8 +27,6 @@
                     - case cell.style
                     - when :asciidoc
                       =cell.content
-                    - when :verse
-                      .verse: pre =cell.text
                     - when :literal
                       .literal: pre =cell.text
                     - else
