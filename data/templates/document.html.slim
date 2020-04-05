@@ -2,8 +2,7 @@ doctype 5
 html lang=(attr :lang, 'en' unless attr? :nolang)
   head
     meta charset=(attr :encoding, 'UTF-8')
-    /[if IE]
-      meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name='viewport' content='width=device-width, initial-scale=1.0'
     meta name='generator' content="Asciidoctor #{attr 'asciidoctor-version'}"
     = html_meta_if 'application-name', (attr 'app-name')
