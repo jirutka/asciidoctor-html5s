@@ -1,4 +1,4 @@
-- if !notitle && has_header?
+- if !notitle && header?
   h1 id=id =header.title
 - if node.sections? && (attr? :toc) && (attr 'toc-placement', 'auto') == 'auto'
   include _toc.html

@@ -1,4 +1,4 @@
-- if has_header?
+- if header?
   - unless notitle
     h1 =header.title
   - if [:author, :revnumber, :revdate, :revremark].any? {|a| attr? a }
