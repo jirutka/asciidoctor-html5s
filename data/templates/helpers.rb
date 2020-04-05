@@ -380,13 +380,23 @@ module Slim::Helpers
   # @return [String]
   #
   def section_title(sec = self, drop_anchors: false)
-    sectnumlevels = document.attr(:sectnumlevels, DEFAULT_SECTNUMLEVELS).to_i
+    title =
+      if sec.caption
+        sec.captioned_title
+      elsif sec.numbered && sec.level <= document.attr(:sectnumlevels, DEFAULT_SECTNUMLEVELS).to_i
+        if sec.level < 2 && document.doctype == 'book' && %w[chapter part].include?(sec.sectname)
+          signifier = document.attr("#{sec.sectname}-signifier")
+          sectnum = sec.sectname == 'part' ? sec.sectnum(nil, ':') : sec.sectnum
+          "#{signifier&.+ ' '}#{sectnum} #{sec.title}"
+        else
+          "#{sec.sectnum} #{sec.title}"
+        end
+      else
+        sec.title
+      end
 
-    title = sec.captioned_title
-    title = title.gsub(/<(?:a[^>+]+|\/a)>/, '') if drop_anchors && title.include?('<a')
-
-    if sec.numbered && !sec.caption && sec.level <= sectnumlevels
-      [sec.sectnum, title].join(' ')
+    if drop_anchors && title.include?('<a')
+      title.gsub(/<(?:a[^>+]+|\/a)>/, '')
     else
       title
     end
