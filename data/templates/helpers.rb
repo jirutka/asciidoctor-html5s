@@ -688,7 +688,7 @@ is book and must be a child of a book part. Excluding block content."
       else
         ref = document.catalog[:refs][attr :refid]
         if ref.kind_of? Asciidoctor::AbstractNode
-          ref.xreftext((@_html5s_xrefstyle ||= document.attributes['xrefstyle']))
+          ref.xreftext(attr(:xrefstyle, nil, true))
         end
       end
     (str || "[#{attr :refid}]").tr_s("\n", ' ')
