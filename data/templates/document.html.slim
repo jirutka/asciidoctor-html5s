@@ -1,5 +1,10 @@
 doctype 5
 html lang=(attr :lang, 'en' unless attr? :nolang)
+  / Render the document content before styles_and_scripts -
+  / SyntaxHighlighter#docinfo must be called after SyntaxHighlighter#highlight
+  / because some highlighter plugins emit style/script tags only when
+  / #highlight was called at least once.
+  - document_content = content
   head
     meta charset=(attr :encoding, 'UTF-8')
     meta http-equiv="X-UA-Compatible" content="IE=edge"
@@ -23,7 +28,7 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
     - unless noheader
       header
         include _header.html
-    #content =content
+    #content =document_content
     - unless !footnotes? || (attr? :nofootnotes)
       include _footnotes.html
     - unless nofooter

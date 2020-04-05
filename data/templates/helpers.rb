@@ -7,6 +7,7 @@ require 'date' unless RUBY_PLATFORM == 'opal'
 module Slim::Helpers
 
   # URIs of external assets.
+  CDN_BASE_URI         = '//cdnjs.cloudflare.com/ajax/libs'  # for syntax highlighters in Asciidoctor >=2.0.0
   FONT_AWESOME_URI     = '//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css'
   HIGHLIGHTJS_BASE_URI = '//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/'
   KATEX_CSS_URI        = '//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css'
@@ -463,6 +464,22 @@ module Slim::Helpers
   #
 
   ##
+  # See {Asciidoctor::SyntaxHighlighter#format}.
+  #
+  # @return [String, nil] a rendered HTML.
+  def formatted_source
+    hl = document.syntax_highlighter or return nil
+
+    opts = { nowrap: nowrap? }
+    if hl.highlight?
+      opts[:css_mode] = document.attr("#{hl.name}-css", :class).to_sym
+      opts[:style] = document.attr("#{hl.name}-style")
+    end
+
+    hl.format(self, source_lang, opts)
+  end
+
+  ##
   # Returns the callout list attached to this listing node, or +nil+ if none.
   #
   # Note: This variable is set by extension
@@ -475,6 +492,15 @@ module Slim::Helpers
 
   def source_lang
     local_attr :language, false
+  end
+
+  # This is needed only for Asciidoctor <2.0.0.
+  def source_code_class
+    if document.attr? 'source-highlighter', 'highlightjs'
+      "language-#{source_lang || 'none'} hljs"
+    elsif source_lang
+      "language-#{source_lang}"
+    end
   end
 
   #--------------------------------------------------------
@@ -626,13 +652,15 @@ is book and must be a child of a book part. Excluding block content."
       scripts << { text: KATEX_RENDER_CODE }
     end
 
-    if attr? 'source-highlighter', 'highlightjs'
-      hjs_base = attr :highlightjsdir, HIGHLIGHTJS_BASE_URI
-      hjs_theme = attr 'highlightjs-theme', DEFAULT_HIGHLIGHTJS_THEME
+    if !defined?(::Asciidoctor::SyntaxHighlighter)  # Asciidoctor <2.0.0
+      if attr? 'source-highlighter', 'highlightjs'
+        hjs_base = attr :highlightjsdir, HIGHLIGHTJS_BASE_URI
+        hjs_theme = attr 'highlightjs-theme', DEFAULT_HIGHLIGHTJS_THEME
 
-      scripts << { src: [hjs_base, 'highlight.min.js'] }
-      scripts << { text: 'hljs.initHighlightingOnLoad()' }
-      styles  << { href: [hjs_base, "styles/#{hjs_theme}.min.css"] }
+        scripts << { src: [hjs_base, 'highlight.min.js'] }
+        scripts << { text: 'hljs.initHighlightingOnLoad()' }
+        styles  << { href: [hjs_base, "styles/#{hjs_theme}.min.css"] }
+      end
     end
 
     styles.each do |item|
@@ -648,6 +676,15 @@ is book and must be a child of a book part. Excluding block content."
         tags << html_tag(:script, type: item[:type]) { item[:text] }
       else
         tags << html_tag(:script, type: item[:type], src: urlize(*item[:src]))
+      end
+    end
+
+    if defined?(::Asciidoctor::SyntaxHighlighter) && (hl = syntax_highlighter)  # Asciidoctor >=2.0.0
+      # XXX: We don't care about the declared location and put all to head.
+      [:head, :footer].each do |location|
+        if hl.docinfo?(location)
+          tags << hl.docinfo(location, self, cdn_base_url: CDN_BASE_URI, linkcss: attr?(:linkcss))
+        end
       end
     end
 
