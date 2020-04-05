@@ -1,7 +1,8 @@
 - if option? :collapsible
   details id=id class=role open=(option? :open)
-    summary
-      =title || 'Details'
+    - if title
+      summary
+        =title
     .content
       =content
 - else
