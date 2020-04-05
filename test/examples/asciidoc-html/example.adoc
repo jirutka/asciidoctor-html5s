@@ -1,0 +1,26 @@
+// .collapsible
+.Toggle *Me*
+[%collapsible]
+====
+This content is revealed when the user clicks the words "Toggle Me".
+====
+
+// .collapsible-open
+.Toggle Me
+[%collapsible%open]
+====
+This content is revealed when the user clicks the words "Toggle Me".
+====
+
+// .collapsible-with-id-and-role
+.Toggle Me
+[#lorem.ipsum%collapsible]
+====
+This content is revealed when the user clicks the words "Toggle Me".
+====
+
+// .collapsible-without-title
+[%collapsible]
+====
+This content is revealed when the user clicks the words "Details".
+====
