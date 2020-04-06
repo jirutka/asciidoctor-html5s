@@ -9,6 +9,8 @@ module Asciidoctor::Html5s
   class AttachedColistTreeprocessor < ::Asciidoctor::Extensions::Treeprocessor
 
     def process(document)
+      return if document.backend != 'html5s'
+
       document.find_by(context: :colist) do |colist|
         blocks = colist.parent.blocks
         colist_idx = blocks.find_index(colist)
