@@ -28,7 +28,7 @@ EOF
   s.add_development_dependency 'asciidoctor-templates-compiler', '~> 0.6.0'
   s.add_development_dependency 'bundler', '>= 1.6'
   s.add_development_dependency 'pandoc-ruby', '~> 2.0'
-  s.add_development_dependency 'rake', '~> 12.0'
+  s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'slim', '~> 3.0'
   s.add_development_dependency 'slim-htag', '~> 0.1.0'
 end
