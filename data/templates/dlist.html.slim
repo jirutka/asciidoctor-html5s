@@ -5,7 +5,7 @@
   include _hdlist.html
 - else
   = block_with_title :class=>['dlist', style]
-    dl
+    dl class=style
       - items.each do |terms, dd|
         - [*terms].each do |dt|
           dt =dt.text
