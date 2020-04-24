@@ -1,11 +1,7 @@
-- case style
-- when 'qanda'
-  include _qanda.html
-- else
-  = block_with_title :class=>['dlist', style]
-    dl class=style
-      - items.each do |terms, dd|
-        - [*terms].each do |dt|
-          dt =dt.text
-        - unless dd.nil?
-          dd =(print_item_content dd)
+= block_with_title :class=>['dlist', style], :role=>('doc-qna' if style == 'qanda')
+  dl class=style
+    - items.each do |terms, dd|
+      - [*terms].each do |dt|
+        dt =dt.text
+      - unless dd.nil?
+        dd =(print_item_content dd)
