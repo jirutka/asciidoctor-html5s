@@ -8,9 +8,9 @@
       =(attr :menu)
     - yield_capture
     - (attr 'submenus').each do |submenu|
-      b.submenu
+      b.menu
         =submenu
       - yield_capture
-    b.menuitem =(local_attr :menuitem)
+    b.menu =(local_attr :menuitem)
 - else
-  b.menuref =(attr :menu)
+  b.menu =(attr :menu)
