@@ -25,6 +25,8 @@
     s id=id =text
   - when 'del'
     del id=id =text
+  - when 'ins'
+    ins id=id =text
   - else
     = html_tag_if role? || id, :span, :id=>id, :class=>role
       =text

@@ -7,6 +7,9 @@
 // .role-del
 [del]#deleted text#
 
+// .role-ins
+[ins]#inserted text#
+
 // .double-lang-cs
 :lang: cs
 "`chunky bacon`"
