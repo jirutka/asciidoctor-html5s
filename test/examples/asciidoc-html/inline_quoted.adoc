@@ -2,7 +2,7 @@
 [line-through]#striked text#
 
 // .role-del
-[del]#striked text#
+[del]#deleted text#
 
 // .double-lang-cs
 :lang: cs

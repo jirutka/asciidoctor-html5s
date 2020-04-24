@@ -20,7 +20,10 @@
 - when :asciimath, :latexmath
   span.math id=id data-lang=stem_lang =(delimit_stem text, type)
 - else
-  - if role == 'line-through' || role == 'del'
+  - case role
+  - when 'line-through'
+    s id=id =text
+  - when 'del'
     del id=id =text
   - else
     = html_tag_if role? || id, :span, :id=>id, :class=>role
