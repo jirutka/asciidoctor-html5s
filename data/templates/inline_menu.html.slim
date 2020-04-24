@@ -5,11 +5,11 @@
   span.menuseq
     b.menu
       =(attr :menu)
-      - yield_capture
+    - yield_capture
     - (attr 'submenus').each do |submenu|
       b.submenu
         =submenu
-        - yield_capture
+      - yield_capture
     b.menuitem =(local_attr :menuitem)
 - else
   b.menuref =(attr :menu)
