@@ -125,6 +125,19 @@ link=none / link=false::
 Both block image and inline image supports additional attribute `loading` (see https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading#Images[Lazy loading] on MDN for more information).
 
 
+=== Additional Inline Formatting Roles
+
+del::
+  `++[del]#deleted text#++` is rendered as `<del>deleted text</del>`.
+
+ins::
+  `++[ins]#inserted text#++` is rendered as `<ins>inserted text</ins>`.
+
+strike::
+  `++[strike]#inserted text#++` is rendered as `<s>inserted text</s>`.
+  This is an alias for `line-through`.
+
+
 == Requirements
 
 Note: This converter consists of https://github.com/slim-template/slim/[Slim] templates, but they are precompiled into pure Ruby code using https://github.com/jirutka/asciidoctor-templates-compiler/[asciidoctor-templates-compiler], so you don’t need Slim to use it!
