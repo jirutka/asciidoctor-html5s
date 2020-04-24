@@ -1,6 +1,9 @@
 // .role-line-through
 [line-through]#striked text#
 
+// .role-strike
+[strike]#striked text#
+
 // .role-del
 [del]#deleted text#
 
