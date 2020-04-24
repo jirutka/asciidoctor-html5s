@@ -3,14 +3,16 @@
     | &#160;
     b.caret &#8250;
     | &#32;
-  span.menuseq
-    b.menu
-      =(attr :menu)
+  kbd.menuseq
+    kbd.menu
+      samp =(attr :menu)
     - yield_capture
     - (attr 'submenus').each do |submenu|
-      b.menu
-        =submenu
+      kbd.menu
+        samp =submenu
       - yield_capture
-    b.menu =(local_attr :menuitem)
+    kbd.menu
+      samp =(local_attr :menuitem)
 - else
-  b.menu =(attr :menu)
+  kbd.menu
+    samp =(attr :menu)
