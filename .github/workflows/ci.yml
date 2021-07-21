@@ -1,0 +1,80 @@
+name: CI
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    name: Test with Asciidoctor ${{ matrix.asciidoctor }} on Ruby ${{ matrix.ruby }}
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby:
+          - '2.7'
+          - '2.6'
+          - '2.5'
+          - '2.4'
+          - head
+          - jruby-head
+        asciidoctor: [2.0.10]
+        include:
+          - { asciidoctor: 'git:master', ruby: 2.7 }
+          - { asciidoctor: 1.5.8       , ruby: 2.7 }
+          - { asciidoctor: 1.5.7.1     , ruby: 2.7 }
+          - { asciidoctor: 1.5.7       , ruby: 2.7 }
+    env:
+      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      ASCIIDOCTOR_VERSION: ${{ matrix.asciidoctor }}
+    continue-on-error: ${{ endsWith(matrix.ruby, 'head') || matrix.asciidoctor == 'git:master' }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: sudo apt-get install pandoc
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - run: bundle exec rake test
+      - run: bundle exec rake build:js
+      - run: bundle exec rake readme2md
+
+  publish:
+    name: Publish to RubyGems and npmjs
+    needs: [test]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: sudo apt-get install pandoc
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org
+
+      - run: bundle exec rake build
+      - run: bundle exec rake build:js
+      - run: bundle exec rake readme2md
+
+      - name: Publish to RubyGems
+        run: |
+          install -D -m 0600 /dev/null $HOME/.gem/credentials
+          printf -- '---\n:rubygems_api_key: %s\n' "$RUBYGEMS_API_KEY" > $HOME/.gem/credentials
+          gem build *.gemspec
+          gem push *.gem
+        env:
+          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}  # c9a4......f34d
+
+      - name: Publish to npmjs
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}  # d0e3......b2a6

@@ -5,7 +5,7 @@
 :gh-branch: master
 
 ifdef::env-github[]
-image:https://travis-ci.org/{gh-name}.svg?branch={gh-branch}[Build Status, link="https://travis-ci.org/{gh-name}"]
+image:https://github.com/{gh-name}/workflows/CI/badge.svg[CI Status, link=https://github.com/{gh-name}/actions?query=workflow%3A%22CI%22]
 image:https://img.shields.io/gem/v/{gem-name}.svg?style=flat[Gem Version, link="https://rubygems.org/gems/{gem-name}"]
 image:https://img.shields.io/npm/v/{gem-name}.svg?style=flat[npm Version, link="https://www.npmjs.org/package/{gem-name}"]
 endif::env-github[]
