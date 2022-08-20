@@ -11,10 +11,11 @@ jobs:
       fail-fast: false
       matrix:
         ruby:
+          - '3.1'
           - '3.0'
           - '2.7'
           - '2.6'
-          #- head  XXX: it's setup-ruby is failing
+          - head
           - jruby-head
         asciidoctor: [2.0.15]
         include:
@@ -36,7 +37,9 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
+          bundler-cache: false  # XXX: problems with nokogiri on ruby 3.1+
+
+      - run: bundle install
 
       - run: bundle exec rake test
       - run: bundle exec rake build:js
