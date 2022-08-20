@@ -17,9 +17,9 @@ jobs:
           - '2.6'
           - head
           - jruby-head
-        asciidoctor: [2.0.15]
+        asciidoctor: [2.0.17]
         include:
-          - { asciidoctor: 'git:main', ruby: 2.7 }
+          - { asciidoctor: 'git:main', ruby: 3.1 }
           - { asciidoctor: 2.0.10    , ruby: 2.7 }
           - { asciidoctor: 2.0.0     , ruby: 2.7 }
           - { asciidoctor: 1.5.8     , ruby: 2.7 }
