@@ -164,13 +164,13 @@ ifndef::npm-readme[]
 
 Install {gem-name} from Rubygems:
 
-[source, sh, subs="+attributes"]
-gem install {gem-name}
+[source, console, subs="+attributes"]
+$ gem install {gem-name}
 
 or to get the latest development version:
 
-[source, sh, subs="+attributes"]
-gem install --pre {gem-name}
+[source, console, subs="+attributes"]
+$ gem install --pre {gem-name}
 
 
 === Node.js
@@ -178,8 +178,8 @@ endif::npm-readme[]
 
 Install {gem-name} from npmjs.com:
 
-[source, sh, subs="+attributes"]
-npm install --save {gem-name}
+[source, console, subs="+attributes"]
+$ npm install --save {gem-name}
 
 
 == Usage
@@ -187,8 +187,8 @@ npm install --save {gem-name}
 ifndef::npm-readme[]
 === CLI
 
-[source, sh, subs="+attributes"]
-asciidoctor -r {gem-name} -b html5s FILE...
+[source, console, subs="+attributes"]
+$ asciidoctor -r {gem-name} -b html5s FILE...
 
 
 === Node.js
