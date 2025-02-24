@@ -30,9 +30,9 @@
     "prepublishOnly": "bundle install && bundle exec rake build:js && bundle exec rake readme2md"
   },
   "devDependencies": {
-    "@asciidoctor/core": ">=2.0.0 <3.0.0"
+    "@asciidoctor/core": ">=3.0.0 <4.0.0"
   },
   "peerDependencies": {
-    "@asciidoctor/core": ">=2.0.0 <3.0.0"
+    "@asciidoctor/core": ">=3.0.0 <4.0.0"
   }
 }

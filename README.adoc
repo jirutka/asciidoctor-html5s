@@ -154,7 +154,7 @@ ifndef::npm-readme[]
 endif::npm-readme[]
 
 * https://nodejs.org/[Node.js]
-* https://www.npmjs.com/package/@asciidoctor/core[@asciidoctor/core] >=2.0.0 <3.0.0
+* https://www.npmjs.com/package/@asciidoctor/core[@asciidoctor/core] >=3.0.0 <4.0.0
 
 
 == Installation
