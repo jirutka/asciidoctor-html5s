@@ -41,7 +41,10 @@ jobs:
       - run: bundle install
 
       - run: bundle exec rake test
-      - run: bundle exec rake build:js
+
+      - if: matrix.ruby != 'jruby-head'
+        run: bundle exec rake build:js
+
       - run: bundle exec rake readme2md
 
   publish:
