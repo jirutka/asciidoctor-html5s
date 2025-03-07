@@ -11,19 +11,19 @@ jobs:
       fail-fast: false
       matrix:
         ruby:
-          - '3.1'
-          - '3.0'
-          - '2.7'
          #- head  TODO: Uncomment after asciidoctor fixes compatibility with Ruby >=3.5
           - jruby-head
-        asciidoctor: [2.0.17]
+          - '3.4'
+          - '3.3'
+          - '3.2'
+          - '3.1'
+          - '2.7'
+        asciidoctor: [2.0.23]
         include:
-          - { asciidoctor: 'git:main', ruby: 3.1 }
-          - { asciidoctor: 2.0.10    , ruby: 2.7 }
-          - { asciidoctor: 2.0.0     , ruby: 2.7 }
-          - { asciidoctor: 1.5.8     , ruby: 2.7 }
-          - { asciidoctor: 1.5.7.1   , ruby: 2.7 }
-          - { asciidoctor: 1.5.7     , ruby: 2.7 }
+          - { asciidoctor: 'git:main', ruby: '3.3' }
+          - { asciidoctor: 2.0.20    , ruby: '3.2' }
+          - { asciidoctor: 2.0.16    , ruby: '3.0' }
+          - { asciidoctor: 2.0.10    , ruby: '2.7' }
     env:
       CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
       ASCIIDOCTOR_VERSION: ${{ matrix.asciidoctor }}
@@ -59,7 +59,7 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 3.3
           bundler-cache: true
 
       - uses: actions/setup-node@v2
